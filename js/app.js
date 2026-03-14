@@ -109,10 +109,28 @@ function bindEvents() {
       const q = filteredQuestions[currentIndex];
       if (!q) return;
       if (q.type === 'mcq' || q.type === 'tf') {
+        // Number keys select MCQ/TF choices
         const choiceIndex = parseInt(e.key, 10) - 1;
         const choiceBtns = DOM.qChoices.querySelectorAll('.choice-btn');
         if (choiceBtns[choiceIndex] && !choiceBtns[choiceIndex].disabled) {
           choiceBtns[choiceIndex].click();
+        }
+      } else {
+        // For reveal-type questions (list/define/fill):
+        // 1 = Reveal Answer (before reveal) OR Got it Right (after reveal)
+        // 2 = Got it Wrong (after reveal)
+        const revealVisible = DOM.revealBtn && !DOM.revealBtn.classList.contains('hidden');
+        const gotRightVisible = DOM.gotRightBtn && !DOM.gotRightBtn.classList.contains('hidden');
+        const gotWrongVisible = DOM.gotWrongBtn && !DOM.gotWrongBtn.classList.contains('hidden');
+
+        if (e.key === '1') {
+          if (revealVisible) {
+            DOM.revealBtn.click();
+          } else if (gotRightVisible) {
+            DOM.gotRightBtn.click();
+          }
+        } else if (e.key === '2' && gotWrongVisible) {
+          DOM.gotWrongBtn.click();
         }
       }
     }

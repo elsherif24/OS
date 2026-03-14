@@ -40,7 +40,12 @@ OS/
 ### Screens (all in `index.html`, toggled via `.active` class)
 
 1. **Home Screen (`#home-screen`)** — Preference selection: lectures, sources, types, filters (include solved, randomize). Shows matching question count. "Start" button.
-2. **Quiz Screen (`#quiz-screen`)** — One question at a time. Top bar with back button, progress (e.g. "3 / 45"), progress bar. Question card with meta badges, question text, optional figure image, choices or reveal button. Prev/Next navigation. Keyboard nav (Arrow keys, A/D, Space/Enter).
+2. **Quiz Screen (`#quiz-screen`)** — One question at a time. Top bar with back button, progress (e.g. "3 / 45"), progress bar. Question card with meta badges, question text, optional figure image, choices or reveal button. Prev/Next navigation. Keyboard shortcuts:
+   - `←`/`→` or `A`/`D`: Previous/Next question
+   - `1`–`9`: Select MCQ/TF choice by number
+   - `Space`/`Enter`: Reveal answer (list/define/fill, before reveal)
+   - `1`: Reveal answer (list/define/fill, before reveal) OR "Got it Right" (after reveal)
+   - `2`: "Got it Wrong" (list/define/fill, after reveal)
 3. **Settings Modal (`#settings-modal`)** — Theme toggle (dark/light), export/import JSON, reset progress per lecture or all.
 
 ### Question Data Model

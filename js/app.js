@@ -13,7 +13,7 @@ const App = (() => {
   let isOnCompletionScreen = false;
 
   // --- Lecture Config ---
-  const TOTAL_CHAPTERS = 4;
+  const TOTAL_LECTURES = 4;
 
   // --- DOM Cache ---
   const $ = (sel) => document.querySelector(sel);
@@ -76,12 +76,82 @@ const App = (() => {
     DOM.toast = $('#toast');
   }
 
+  // ===== QUESTION ENRICHMENT =====
+  function normalizeText(text) {
+    return String(text || '')
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, ' ');
+  }
+
+  function fnv1aHex(input) {
+    let hash = 0x811c9dc5;
+    for (let i = 0; i < input.length; i++) {
+      hash ^= input.charCodeAt(i);
+      hash = Math.imul(hash, 0x01000193);
+    }
+    return (hash >>> 0).toString(16).padStart(8, '0');
+  }
+
+  function buildQuestionId({ lecture, source, type, question }) {
+    const nn = String(lecture).padStart(2, '0');
+    const payload = normalizeText(question);
+    const hash = fnv1aHex(payload);
+    return `lec_${nn}_${source}_${type}_${hash}`;
+  }
+
+  function inferLectureFromQuestionText(questionText) {
+    // Fallback-only heuristic when lecture isn't present:
+    // finds patterns like "lecture 01", "lec01", "lec 1"
+    const t = String(questionText || '').toLowerCase();
+    const m = t.match(/\b(?:lecture|lec)\s*0?([1-9]\d?)\b/);
+    if (m) return parseInt(m[1], 10);
+    return 1;
+  }
+
+  function inferSourceFromQuestionShape(q) {
+    // Conservative fallback: if we don't know, assume testbank
+    // (source should ideally be set in data-loader context)
+    if (q && (q.source === 'student' || q.source === 'testbank')) {
+      return q.source;
+    }
+    return 'testbank';
+  }
+
+  function enrichQuestions() {
+    window.ALL_QUESTIONS = window.ALL_QUESTIONS.map((q) => {
+      const lecture = Number.isInteger(q.lecture)
+        ? q.lecture
+        : Number.isInteger(q.chapter)
+          ? q.chapter
+          : inferLectureFromQuestionText(q.question);
+
+      const source = inferSourceFromQuestionShape(q);
+      const type = String(q.type || '').toLowerCase();
+
+      const id = buildQuestionId({
+        lecture,
+        source,
+        type,
+        question: q.question,
+      });
+
+      return {
+        ...q,
+        lecture,
+        source,
+        id,
+      };
+    });
+  }
+
   // ===== INITIALIZATION =====
   function init() {
     cacheDom();
+    enrichQuestions();
     applyTheme(Storage.getTheme());
-    buildChapterCheckboxes();
-    buildResetChapterSelect();
+    buildLectureCheckboxes();
+    buildResetLectureSelect();
     restorePreferences();
     bindEvents();
     updateQuestionCount();
@@ -96,9 +166,9 @@ const App = (() => {
   }
 
   // ===== BUILD UI =====
-  function buildChapterCheckboxes() {
+  function buildLectureCheckboxes() {
     let html = '';
-    for (let i = 1; i <= TOTAL_CHAPTERS; i++) {
+    for (let i = 1; i <= TOTAL_LECTURES; i++) {
       const num = String(i).padStart(2, '0');
       html += `
         <label class="chip">
@@ -109,9 +179,9 @@ const App = (() => {
     DOM.chapterCheckboxes.innerHTML = html;
   }
 
-  function buildResetChapterSelect() {
+  function buildResetLectureSelect() {
     let html = '';
-    for (let i = 1; i <= TOTAL_CHAPTERS; i++) {
+    for (let i = 1; i <= TOTAL_LECTURES; i++) {
       const num = String(i).padStart(2, '0');
       html += `<option value="${i}">Lecture ${num}</option>`;
     }
@@ -120,8 +190,8 @@ const App = (() => {
 
   // ===== PREFERENCES =====
   function gatherPreferences() {
-    const chapters = [];
-    $$('input[name="chapter"]:checked').forEach((cb) => chapters.push(parseInt(cb.value)));
+    const lectures = [];
+    $$('input[name="chapter"]:checked').forEach((cb) => lectures.push(parseInt(cb.value, 10)));
 
     const sources = [];
     $$('input[name="source"]:checked').forEach((cb) => sources.push(cb.value));
@@ -133,35 +203,31 @@ const App = (() => {
     const onlyWrong = DOM.filterWrong.checked;
     const randomize = DOM.filterRandom.checked;
 
-    return { chapters, sources, types, includeSolved, onlyWrong, randomize };
+    return { lectures, sources, types, includeSolved, onlyWrong, randomize };
   }
 
   function restorePreferences() {
     const prefs = Storage.getPreferences();
     if (!prefs) return;
 
-    // Chapters
-    if (prefs.chapters) {
+    if (prefs.lectures) {
       $$('input[name="chapter"]').forEach((cb) => {
-        cb.checked = prefs.chapters.includes(parseInt(cb.value));
+        cb.checked = prefs.lectures.includes(parseInt(cb.value, 10));
       });
     }
 
-    // Sources
     if (prefs.sources) {
       $$('input[name="source"]').forEach((cb) => {
         cb.checked = prefs.sources.includes(cb.value);
       });
     }
 
-    // Types
     if (prefs.types) {
       $$('input[name="type"]').forEach((cb) => {
         cb.checked = prefs.types.includes(cb.value);
       });
     }
 
-    // Filters
     if (typeof prefs.includeSolved === 'boolean') {
       DOM.filterSolved.checked = prefs.includeSolved;
     }
@@ -181,28 +247,20 @@ const App = (() => {
   function getFilteredQuestions() {
     const prefs = gatherPreferences();
     let questions = window.ALL_QUESTIONS.filter((q) => {
-      if (!prefs.chapters.includes(q.chapter)) return false;
+      if (!prefs.lectures.includes(q.lecture)) return false;
       if (!prefs.sources.includes(q.source)) return false;
 
-      // For figure-type questions, check the subtype; for non-figure, check type directly
       const qType = q.type === 'figure' ? q.subtype : q.type;
 
-      // If the question is a figure, it should be included if user selected
-      // the underlying subtype OR if we just treat 'figure' as its own type
-      // We check: does the type list include this question's type?
-      // 'figure' questions have a subtype; we match on the subtype
       if (q.type === 'figure') {
-        // include if the subtype matches any selected type
         if (!prefs.types.includes(q.subtype)) return false;
       } else {
-        if (!prefs.types.includes(q.type)) return false;
+        if (!prefs.types.includes(qType)) return false;
       }
 
-      // "Only Wrong" mode: show only questions marked wrong
       if (prefs.onlyWrong) {
         if (!Storage.isWrong(q.id)) return false;
       } else {
-        // Normal mode: exclude solved unless "Include Solved" is checked
         if (!prefs.includeSolved && Storage.isSolved(q.id)) return false;
       }
 
@@ -249,6 +307,7 @@ const App = (() => {
 
     currentIndex = 0;
     answeredState = {};
+    isOnCompletionScreen = false;
     showScreen(DOM.quizScreen);
     renderQuestion();
   }
@@ -258,36 +317,19 @@ const App = (() => {
 
     const q = filteredQuestions[currentIndex];
     const total = filteredQuestions.length;
-    const isSolved = Storage.isSolved(q.id);
-    const isWrong = Storage.isWrong(q.id);
-    const state = answeredState[q.id];
 
-    // Progress
+    // Top progress
     DOM.progressText.textContent = `${currentIndex + 1} / ${total}`;
-    DOM.progressFill.style.width = `${((currentIndex + 1) / total) * 100}%`;
+    const pct = ((currentIndex + 1) / total) * 100;
+    DOM.progressFill.style.width = `${pct}%`;
 
-    // Re-trigger card animation
-    DOM.questionCard.style.animation = 'none';
-    DOM.questionCard.offsetHeight; // force reflow
-    DOM.questionCard.style.animation = '';
+    // Meta
+    DOM.qChapter.textContent = `Lec ${String(q.lecture).padStart(2, '0')}`;
+    DOM.qType.textContent = q.type.toUpperCase();
+    DOM.qSource.textContent = q.source === 'student' ? "Student's Effort" : 'Testbank';
 
-    // Meta badges
-    const chNum = String(q.chapter).padStart(2, '0');
-    DOM.qChapter.textContent = `Lec ${chNum}`;
-    DOM.qType.textContent = formatType(q.type === 'figure' ? q.subtype : q.type);
-    DOM.qSource.textContent = q.source === 'student' ? "Student's" : 'Testbank';
-
-    if (isSolved) {
-      DOM.qSolvedBadge.classList.remove('hidden');
-    } else {
-      DOM.qSolvedBadge.classList.add('hidden');
-    }
-
-    if (isWrong) {
-      DOM.qWrongBadge.classList.remove('hidden');
-    } else {
-      DOM.qWrongBadge.classList.add('hidden');
-    }
+    DOM.qSolvedBadge.classList.toggle('hidden', !Storage.isSolved(q.id));
+    DOM.qWrongBadge.classList.toggle('hidden', !Storage.isWrong(q.id));
 
     // Figure
     if (q.figure) {
@@ -299,507 +341,322 @@ const App = (() => {
       DOM.qFigureImg.src = '';
     }
 
-    // Question text
-    DOM.qText.textContent = q.question;
-
-    // Reset areas
+    // Content
+    DOM.qText.textContent = q.question || '';
     DOM.qChoices.innerHTML = '';
     DOM.qHintBlock.classList.add('hidden');
     DOM.qHintText.textContent = '';
     DOM.qAnswerBlock.classList.add('hidden');
     DOM.qAnswerContent.innerHTML = '';
+
     DOM.revealBtn.classList.add('hidden');
     DOM.gotRightBtn.classList.add('hidden');
     DOM.gotWrongBtn.classList.add('hidden');
 
-    // Determine effective type
-    const effectiveType = q.type === 'figure' ? (q.subtype || 'list') : q.type;
+    const state = answeredState[q.id] || { answered: false, selectedIndex: null, judged: false };
 
-    // Render based on type
-    if (effectiveType === 'mcq' || effectiveType === 'tf') {
-      renderChoices(q, state);
-      // Show hint only if already answered
-      if (state && state.answered) {
-        if (q.hint) {
-          DOM.qHintText.textContent = q.hint;
-          DOM.qHintBlock.classList.remove('hidden');
-        }
-      }
+    if (q.type === 'mcq' || q.type === 'tf') {
+      renderChoiceQuestion(q, state);
     } else {
-      // list, define, fill — show reveal button
-      if (state && state.answered) {
-        // Already revealed
-        showAnswerBlock(q);
-        // Show self-assessment buttons if not yet judged
-        if (!state.judged) {
-          DOM.gotRightBtn.classList.remove('hidden');
-          DOM.gotWrongBtn.classList.remove('hidden');
-        }
-      } else {
-        DOM.revealBtn.classList.remove('hidden');
-      }
+      renderRevealQuestion(q, state);
     }
 
-    // Navigation
     DOM.prevBtn.disabled = currentIndex === 0;
-
-    // Last question: show "Done" instead of disabling
-    if (currentIndex === total - 1) {
-      DOM.nextBtn.innerHTML = `
-        Done
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      `;
-      DOM.nextBtn.disabled = false;
-    } else {
-      DOM.nextBtn.innerHTML = `
-        Next
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-      `;
-      DOM.nextBtn.disabled = false;
-    }
+    DOM.nextBtn.textContent = currentIndex === total - 1 ? 'Finish' : 'Next';
   }
 
-  function renderChoices(q, state) {
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const choices = q.choices || [];
-
-    choices.forEach((choice, idx) => {
+  function renderChoiceQuestion(q, state) {
+    const choices = Array.isArray(q.choices) ? q.choices : [];
+    choices.forEach((choiceText, idx) => {
       const btn = document.createElement('button');
       btn.className = 'choice-btn';
-      btn.innerHTML = `
-        <span class="choice-letter">${letters[idx]}</span>
-        <span class="choice-text">${escapeHtml(choice)}</span>
-      `;
+      btn.textContent = choiceText;
+      btn.disabled = state.answered;
 
-      if (state && state.answered) {
-        // Already answered — show result
-        btn.classList.add('disabled');
-        if (idx === q.answer) {
-          btn.classList.add('correct');
-        } else if (idx === state.selectedIndex) {
-          btn.classList.add('wrong');
-        } else {
-          btn.classList.add('dimmed');
-        }
-      } else {
-        // Not yet answered — bind click
-        btn.addEventListener('click', () => handleChoiceClick(q, idx));
+      if (state.answered) {
+        const isCorrect = idx === q.answer;
+        const isSelected = idx === state.selectedIndex;
+        if (isCorrect) btn.classList.add('correct');
+        if (isSelected && !isCorrect) btn.classList.add('wrong');
       }
 
+      btn.addEventListener('click', () => handleChoiceAnswer(q, idx));
       DOM.qChoices.appendChild(btn);
     });
+
+    if (state.answered && q.hint) {
+      DOM.qHintBlock.classList.remove('hidden');
+      DOM.qHintText.textContent = q.hint;
+    }
   }
 
-  function handleChoiceClick(q, selectedIndex) {
+  function renderRevealQuestion(q, state) {
+    DOM.revealBtn.classList.remove('hidden');
+
+    if (state.answered) {
+      DOM.qAnswerBlock.classList.remove('hidden');
+      DOM.gotRightBtn.classList.remove('hidden');
+      DOM.gotWrongBtn.classList.remove('hidden');
+      renderAnswerContent(q);
+    }
+
+    DOM.revealBtn.onclick = () => {
+      answeredState[q.id] = { ...state, answered: true };
+      DOM.qAnswerBlock.classList.remove('hidden');
+      DOM.gotRightBtn.classList.remove('hidden');
+      DOM.gotWrongBtn.classList.remove('hidden');
+      renderAnswerContent(q);
+    };
+
+    DOM.gotRightBtn.onclick = () => {
+      Storage.markSolved(q.id);
+      updateStatusBadges(q.id);
+      showToast('Marked as solved');
+    };
+
+    DOM.gotWrongBtn.onclick = () => {
+      Storage.markWrong(q.id);
+      updateStatusBadges(q.id);
+      showToast('Marked as wrong');
+    };
+  }
+
+  function renderAnswerContent(q) {
+    if (q.type === 'list' && Array.isArray(q.answer)) {
+      const ul = document.createElement('ul');
+      q.answer.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+      DOM.qAnswerContent.innerHTML = '';
+      DOM.qAnswerContent.appendChild(ul);
+      return;
+    }
+
+    DOM.qAnswerContent.textContent = Array.isArray(q.answer)
+      ? q.answer.join(', ')
+      : String(q.answer ?? '');
+  }
+
+  function handleChoiceAnswer(q, selectedIndex) {
     const isCorrect = selectedIndex === q.answer;
+    answeredState[q.id] = {
+      answered: true,
+      selectedIndex,
+      judged: isCorrect,
+    };
 
-    // Save state
-    answeredState[q.id] = { answered: true, selectedIndex };
-
-    // Mark solved only if correct, mark wrong if incorrect
     if (isCorrect) {
       Storage.markSolved(q.id);
+      showToast('Correct! Marked as solved', 'success');
     } else {
       Storage.markWrong(q.id);
+      showToast('Wrong answer. Marked as wrong', 'error');
     }
 
-    // Re-render to show correct/wrong
     renderQuestion();
   }
 
-  function showAnswerBlock(q) {
-    DOM.qAnswerBlock.classList.remove('hidden');
+  function updateStatusBadges(questionId) {
+    DOM.qSolvedBadge.classList.toggle('hidden', !Storage.isSolved(questionId));
+    DOM.qWrongBadge.classList.toggle('hidden', !Storage.isWrong(questionId));
+  }
 
-    const answer = q.answer;
-
-    if (Array.isArray(answer)) {
-      // List answer
-      let html = '<ul>';
-      answer.forEach((item) => {
-        html += `<li>${escapeHtml(item)}</li>`;
-      });
-      html += '</ul>';
-      DOM.qAnswerContent.innerHTML = html;
+  function goNext() {
+    if (isOnCompletionScreen) return;
+    if (currentIndex < filteredQuestions.length - 1) {
+      currentIndex += 1;
+      renderQuestion();
     } else {
-      // String answer
-      DOM.qAnswerContent.textContent = answer;
+      finishQuiz();
     }
   }
 
-  function handleReveal() {
-    const qObj = filteredQuestions[currentIndex];
-    if (!qObj) return;
-    answeredState[qObj.id] = { answered: true, selectedIndex: null, judged: false };
-    renderQuestion();
+  function goPrev() {
+    if (isOnCompletionScreen) return;
+    if (currentIndex > 0) {
+      currentIndex -= 1;
+      renderQuestion();
+    }
   }
 
-  function handleGotRight() {
-    const q = filteredQuestions[currentIndex];
-    if (!q) return;
-    Storage.markSolved(q.id);
-    answeredState[q.id].judged = true;
-    showToast('Marked as solved', 'success');
-    renderQuestion();
+  function finishQuiz() {
+    isOnCompletionScreen = true;
+    showToast('Quiz completed! Returning home...');
+    setTimeout(() => {
+      showScreen(DOM.homeScreen);
+      updateQuestionCount();
+      isOnCompletionScreen = false;
+    }, 900);
   }
 
-  function handleGotWrong() {
-    const q = filteredQuestions[currentIndex];
-    if (!q) return;
-    Storage.markWrong(q.id);
-    answeredState[q.id].judged = true;
-    showToast('Marked as wrong', 'error');
-    renderQuestion();
-  }
-
-  // ===== HELPERS =====
-  function formatType(type) {
-    const map = {
-      mcq: 'MCQ',
-      tf: 'True/False',
-      list: 'List',
-      define: 'Define',
-      fill: 'Fill',
-      figure: 'Figure',
-    };
-    return map[type] || type;
-  }
-
-  function escapeHtml(str) {
-    if (typeof str !== 'string') return str;
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  // ===== TOAST =====
-  let toastTimeout = null;
-
-  function showToast(message, type = 'info') {
-    DOM.toast.textContent = message;
-    DOM.toast.className = `toast toast-${type}`;
-
-    // Force reflow for animation restart
-    DOM.toast.offsetHeight;
-    DOM.toast.classList.add('visible');
-
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => {
-      DOM.toast.classList.remove('visible');
-      setTimeout(() => {
-        DOM.toast.classList.add('hidden');
-      }, 300);
-    }, 2500);
-  }
-
-  // ===== SETTINGS =====
+  // ===== SETTINGS / IMPORT / EXPORT =====
   function openSettings() {
     DOM.settingsModal.classList.remove('hidden');
   }
 
-  function closeSettingsModal() {
+  function closeSettings() {
     DOM.settingsModal.classList.add('hidden');
   }
 
-  function handleExport() {
-    const json = Storage.exportData();
-    const blob = new Blob([json], { type: 'application/json' });
+  function exportData() {
+    const blob = new Blob([Storage.exportData()], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'os_review_data.json';
+    a.download = `os-review-export-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
     a.click();
+    a.remove();
     URL.revokeObjectURL(url);
-    showToast('Data exported', 'success');
+    showToast('Data exported');
   }
 
-  function handleImport() {
-    DOM.importFile.click();
-  }
-
-  function handleImportFile(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-
+  function importDataFromFile(file) {
     const reader = new FileReader();
-    reader.onload = (ev) => {
-      const result = Storage.importData(ev.target.result);
+    reader.onload = () => {
+      const result = Storage.importData(String(reader.result || ''));
       if (result.success) {
-        showToast(result.message, 'success');
         applyTheme(Storage.getTheme());
         restorePreferences();
         updateQuestionCount();
+        showToast(result.message, 'success');
       } else {
         showToast(result.message, 'error');
       }
     };
     reader.readAsText(file);
-
-    // Reset input so same file can be re-imported
-    DOM.importFile.value = '';
   }
 
-  function handleResetChapter() {
-    const chapter = parseInt(DOM.resetChapterSelect.value);
-    const chNum = String(chapter).padStart(2, '0');
-
-    if (confirm(`Reset all progress for Lecture ${chNum}?`)) {
-      Storage.resetChapter(chapter);
-      showToast(`Lecture ${chNum} progress reset`, 'success');
-      updateQuestionCount();
-    }
+  function resetLectureProgress() {
+    const lectureNum = parseInt(DOM.resetChapterSelect.value, 10);
+    Storage.resetChapter(lectureNum);
+    updateQuestionCount();
+    showToast(`Lecture ${String(lectureNum).padStart(2, '0')} progress reset`);
   }
 
-  function handleResetAll() {
-    if (confirm('Reset ALL progress? This cannot be undone.')) {
-      Storage.resetAll();
-      showToast('All progress reset', 'success');
-      updateQuestionCount();
-    }
+  function resetAllProgress() {
+    Storage.resetAll();
+    updateQuestionCount();
+    showToast('All progress reset');
   }
 
-  // ===== COMPLETION =====
-  function showCompletion() {
-    isOnCompletionScreen = true;
-    const total = filteredQuestions.length;
-
-    // Calculate score from session
-    let correct = 0;
-    let wrong = 0;
-    let skipped = 0;
-
-    filteredQuestions.forEach((q) => {
-      const state = answeredState[q.id];
-      if (!state || !state.answered) {
-        skipped++;
-      } else {
-        const effectiveType = q.type === 'figure' ? (q.subtype || 'list') : q.type;
-        if (effectiveType === 'mcq' || effectiveType === 'tf') {
-          // Auto-checked: correct if selected === answer
-          if (state.selectedIndex === q.answer) {
-            correct++;
-          } else {
-            wrong++;
-          }
-        } else {
-          // Self-assessed: judged via got-right / got-wrong
-          if (state.judged) {
-            if (Storage.isSolved(q.id)) {
-              correct++;
-            } else {
-              wrong++;
-            }
-          } else {
-            skipped++;
-          }
-        }
-      }
-    });
-
-    const answered = correct + wrong;
-    const percentage = answered > 0 ? Math.round((correct / answered) * 100) : 0;
-
-    // Pick emoji based on score
-    let emoji = '🎉';
-    let message = 'Perfect score!';
-    if (percentage < 50) {
-      emoji = '💪';
-      message = 'Keep practicing, you\'ll get there!';
-    } else if (percentage < 75) {
-      emoji = '📚';
-      message = 'Good effort, review the wrong ones!';
-    } else if (percentage < 100) {
-      emoji = '🌟';
-      message = 'Great job, almost perfect!';
-    }
-
-    DOM.questionCard.innerHTML = `
-      <div class="completion-card">
-        <div class="completion-icon">${emoji}</div>
-        <h2>Session Complete!</h2>
-        <p>${message}</p>
-        <div class="score-summary">
-          <div class="score-row">
-            <span class="score-label">Total Questions</span>
-            <span class="score-value">${total}</span>
-          </div>
-          <div class="score-row score-correct">
-            <span class="score-label">✓ Correct</span>
-            <span class="score-value">${correct}</span>
-          </div>
-          <div class="score-row score-wrong">
-            <span class="score-label">✗ Wrong</span>
-            <span class="score-value">${wrong}</span>
-          </div>
-          ${skipped > 0 ? `
-          <div class="score-row score-skipped">
-            <span class="score-label">— Skipped</span>
-            <span class="score-value">${skipped}</span>
-          </div>` : ''}
-          <div class="score-row score-percentage">
-            <span class="score-label">Score</span>
-            <span class="score-value">${answered > 0 ? percentage + '%' : '—'}</span>
-          </div>
-        </div>
-        <button class="btn-primary" onclick="document.querySelector('#back-btn').click()">Back to Home</button>
-      </div>
-    `;
-
-    DOM.revealBtn.classList.add('hidden');
-    DOM.gotRightBtn.classList.add('hidden');
-    DOM.gotWrongBtn.classList.add('hidden');
-    DOM.qChoices.innerHTML = '';
-    DOM.qHintBlock.classList.add('hidden');
-    DOM.qAnswerBlock.classList.add('hidden');
-
-    // Hide progress bar area and nav
-    DOM.prevBtn.disabled = true;
-    DOM.nextBtn.disabled = true;
-    DOM.nextBtn.classList.add('hidden');
-    DOM.prevBtn.classList.add('hidden');
-  }
-
-  // ===== EVENT BINDING =====
+  // ===== EVENTS =====
   function bindEvents() {
-    // --- Home preference changes -> update count ---
-    DOM.chapterCheckboxes.addEventListener('change', () => {
-      updateQuestionCount();
-    });
-
-    $$('input[name="source"], input[name="type"]').forEach((cb) => {
-      cb.addEventListener('change', updateQuestionCount);
-    });
-
-    DOM.filterSolved.addEventListener('change', () => {
-      // "Include Solved" and "Only Wrong" are mutually exclusive logic-wise
-      if (DOM.filterSolved.checked) {
-        DOM.filterWrong.checked = false;
-      }
-      updateQuestionCount();
-    });
-    DOM.filterWrong.addEventListener('change', () => {
-      if (DOM.filterWrong.checked) {
-        DOM.filterSolved.checked = false;
-      }
-      updateQuestionCount();
-    });
-    DOM.filterRandom.addEventListener('change', updateQuestionCount);
-
-    // --- Select All / Deselect All ---
-    $$('[data-select-all]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const name = btn.getAttribute('data-select-all');
-        $$(`input[name="${name}"]`).forEach((cb) => (cb.checked = true));
-        updateQuestionCount();
-      });
-    });
-
-    $$('[data-deselect-all]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const name = btn.getAttribute('data-deselect-all');
-        $$(`input[name="${name}"]`).forEach((cb) => (cb.checked = false));
-        updateQuestionCount();
-      });
-    });
-
-    // --- Start ---
+    // Start
     DOM.startBtn.addEventListener('click', startQuiz);
 
-    // --- Back ---
+    // Preference changes
+    document.body.addEventListener('change', (e) => {
+      const t = e.target;
+      if (!t) return;
+
+      if (
+        t.matches('input[name="chapter"]') ||
+        t.matches('input[name="source"]') ||
+        t.matches('input[name="type"]')
+      ) {
+        updateQuestionCount();
+        return;
+      }
+
+      if (t.id === 'filter-solved' && t.checked) {
+        DOM.filterWrong.checked = false;
+      }
+      if (t.id === 'filter-wrong' && t.checked) {
+        DOM.filterSolved.checked = false;
+      }
+
+      if (t.id === 'filter-solved' || t.id === 'filter-wrong' || t.id === 'filter-random') {
+        updateQuestionCount();
+      }
+    });
+
+    // Select/Deselect all
+    document.body.addEventListener('click', (e) => {
+      const btn = e.target.closest('button.link-btn');
+      if (!btn) return;
+
+      const selectAllGroup = btn.getAttribute('data-select-all');
+      const deselectAllGroup = btn.getAttribute('data-deselect-all');
+
+      if (selectAllGroup) {
+        $$(`input[name="${selectAllGroup}"]`).forEach((cb) => { cb.checked = true; });
+        updateQuestionCount();
+      }
+
+      if (deselectAllGroup) {
+        $$(`input[name="${deselectAllGroup}"]`).forEach((cb) => { cb.checked = false; });
+        updateQuestionCount();
+      }
+    });
+
+    // Quiz navigation
     DOM.backBtn.addEventListener('click', () => {
-      isOnCompletionScreen = false;
-      DOM.prevBtn.classList.remove('hidden');
-      DOM.nextBtn.classList.remove('hidden');
-      updateQuestionCount();
       showScreen(DOM.homeScreen);
+      updateQuestionCount();
     });
+    DOM.prevBtn.addEventListener('click', goPrev);
+    DOM.nextBtn.addEventListener('click', goNext);
 
-    // --- Navigation ---
-    DOM.prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        renderQuestion();
-      }
-    });
-
-    DOM.nextBtn.addEventListener('click', () => {
-      if (isOnCompletionScreen) return;
-      if (currentIndex < filteredQuestions.length - 1) {
-        currentIndex++;
-        renderQuestion();
-      } else {
-        // Last question — "Done" was clicked
-        showCompletion();
-      }
-    });
-
-    // --- Keyboard Navigation ---
+    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (!DOM.quizScreen.classList.contains('active')) return;
       if (DOM.settingsModal && !DOM.settingsModal.classList.contains('hidden')) return;
 
-      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
-        if (currentIndex > 0) {
-          currentIndex--;
-          renderQuestion();
-        }
-      } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
-        if (currentIndex < filteredQuestions.length - 1) {
-          currentIndex++;
-          renderQuestion();
-
-        }
+      if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') {
+        goNext();
+      } else if (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'a') {
+        goPrev();
       } else if (e.key === ' ' || e.key === 'Enter') {
-        // Space/Enter to reveal answer for non-choice types
-        if (!DOM.revealBtn.classList.contains('hidden')) {
-          e.preventDefault();
-          handleReveal();
+        const q = filteredQuestions[currentIndex];
+        if (!q) return;
+        if (q.type !== 'mcq' && q.type !== 'tf' && DOM.revealBtn && !DOM.revealBtn.classList.contains('hidden')) {
+          DOM.revealBtn.click();
         }
       }
     });
 
-    // --- Reveal ---
-    DOM.revealBtn.addEventListener('click', () => handleReveal());
-
-    // --- Got Right / Got Wrong (self-assessment for list/define/fill) ---
-    DOM.gotRightBtn.addEventListener('click', handleGotRight);
-    DOM.gotWrongBtn.addEventListener('click', handleGotWrong);
-
-    // --- Settings ---
+    // Settings
     DOM.settingsBtn.addEventListener('click', openSettings);
     DOM.quizSettingsBtn.addEventListener('click', openSettings);
-    DOM.closeSettings.addEventListener('click', closeSettingsModal);
+    DOM.closeSettings.addEventListener('click', closeSettings);
+    DOM.settingsModal.querySelector('.modal-overlay').addEventListener('click', closeSettings);
 
-    // Close modal on overlay click
-    DOM.settingsModal.querySelector('.modal-overlay').addEventListener('click', closeSettingsModal);
-
-    // Close modal on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !DOM.settingsModal.classList.contains('hidden')) {
-        closeSettingsModal();
-      }
-    });
-
-    // Theme toggle
     DOM.themeToggle.addEventListener('click', () => {
-      const newTheme = Storage.toggleTheme();
-      applyTheme(newTheme);
+      const next = Storage.toggleTheme();
+      applyTheme(next);
     });
 
-    // Export / Import
-    DOM.exportBtn.addEventListener('click', handleExport);
-    DOM.importBtn.addEventListener('click', handleImport);
-    DOM.importFile.addEventListener('change', handleImportFile);
+    DOM.exportBtn.addEventListener('click', exportData);
+    DOM.importBtn.addEventListener('click', () => DOM.importFile.click());
+    DOM.importFile.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (file) importDataFromFile(file);
+      DOM.importFile.value = '';
+    });
 
-    // Reset
-    DOM.resetChapterBtn.addEventListener('click', handleResetChapter);
-    DOM.resetAllBtn.addEventListener('click', handleResetAll);
+    DOM.resetChapterBtn.addEventListener('click', resetLectureProgress);
+    DOM.resetAllBtn.addEventListener('click', resetAllProgress);
   }
 
-  // --- Public ---
+  // ===== TOAST =====
+  let toastTimer = null;
+  function showToast(message, type = 'info') {
+    DOM.toast.textContent = message;
+    DOM.toast.className = `toast ${type}`;
+    DOM.toast.classList.remove('hidden');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      DOM.toast.classList.add('hidden');
+    }, 1800);
+  }
+
+  // Public API
   return { init };
 })();
 
-// ===== START =====
-document.addEventListener('DOMContentLoaded', () => {
-  App.init();
-});
+// Init on load
+document.addEventListener('DOMContentLoaded', App.init);

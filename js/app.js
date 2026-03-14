@@ -1,5 +1,5 @@
 // ===== GLOBAL QUESTION BANK =====
-// Each ch__.js file pushes into this array
+// Each js/testbank/lec__.js and js/student/lec__.js pushes into this array
 if (typeof window.ALL_QUESTIONS === 'undefined') {
   window.ALL_QUESTIONS = [];
 }
@@ -12,8 +12,8 @@ const App = (() => {
   let answeredState = {}; // { questionId: { answered: true, selectedIndex: number|null, judged?: bool } }
   let isOnCompletionScreen = false;
 
-  // --- Chapter Config ---
-  const TOTAL_CHAPTERS = 10;
+  // --- Lecture Config ---
+  const TOTAL_CHAPTERS = 4;
 
   // --- DOM Cache ---
   const $ = (sel) => document.querySelector(sel);
@@ -103,7 +103,7 @@ const App = (() => {
       html += `
         <label class="chip">
           <input type="checkbox" name="chapter" value="${i}" checked>
-          <span>Chapter ${num}</span>
+          <span>Lecture ${num}</span>
         </label>`;
     }
     DOM.chapterCheckboxes.innerHTML = html;
@@ -113,7 +113,7 @@ const App = (() => {
     let html = '';
     for (let i = 1; i <= TOTAL_CHAPTERS; i++) {
       const num = String(i).padStart(2, '0');
-      html += `<option value="${i}">Chapter ${num}</option>`;
+      html += `<option value="${i}">Lecture ${num}</option>`;
     }
     DOM.resetChapterSelect.innerHTML = html;
   }
@@ -273,7 +273,7 @@ const App = (() => {
 
     // Meta badges
     const chNum = String(q.chapter).padStart(2, '0');
-    DOM.qChapter.textContent = `Ch ${chNum}`;
+    DOM.qChapter.textContent = `Lec ${chNum}`;
     DOM.qType.textContent = formatType(q.type === 'figure' ? q.subtype : q.type);
     DOM.qSource.textContent = q.source === 'student' ? "Student's" : 'Testbank';
 
@@ -542,9 +542,9 @@ const App = (() => {
     const chapter = parseInt(DOM.resetChapterSelect.value);
     const chNum = String(chapter).padStart(2, '0');
 
-    if (confirm(`Reset all progress for Chapter ${chNum}?`)) {
+    if (confirm(`Reset all progress for Lecture ${chNum}?`)) {
       Storage.resetChapter(chapter);
-      showToast(`Chapter ${chNum} progress reset`, 'success');
+      showToast(`Lecture ${chNum} progress reset`, 'success');
       updateQuestionCount();
     }
   }

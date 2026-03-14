@@ -1,5 +1,6 @@
-// ===== CHAPTER 01: Computer Systems Overview =====
-// Source: Operating Systems Internals and Design Principles, 8th Edition - Testbank
+// ===== LECTURE 01: Computer Systems Overview — TESTBANK =====
+// Source: Operating Systems Internals and Design Principles, 8th Edition
+// Testbank questions only. For student-added questions see js/student/lec01.js
 // See GUIDE.md for how to add/edit questions.
 
 if (typeof window.ALL_QUESTIONS === 'undefined') {
@@ -7,10 +8,10 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 }
 
 (function () {
-  const ch01 = [
+  const lec01 = [
     // ==================== TRUE / FALSE ====================
     {
-      id: 'ch01_tf_001',
+      id: 'lec01_tf_001',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -21,7 +22,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_002',
+      id: 'lec01_tf_002',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -32,7 +33,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_003',
+      id: 'lec01_tf_003',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -43,7 +44,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_004',
+      id: 'lec01_tf_004',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -54,7 +55,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_005',
+      id: 'lec01_tf_005',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -65,7 +66,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_006',
+      id: 'lec01_tf_006',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -76,7 +77,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_007',
+      id: 'lec01_tf_007',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -87,7 +88,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_008',
+      id: 'lec01_tf_008',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -98,7 +99,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_009',
+      id: 'lec01_tf_009',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -109,7 +110,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_010',
+      id: 'lec01_tf_010',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -120,7 +121,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_011',
+      id: 'lec01_tf_011',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -131,7 +132,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_012',
+      id: 'lec01_tf_012',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -142,7 +143,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_013',
+      id: 'lec01_tf_013',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -153,7 +154,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_014',
+      id: 'lec01_tf_014',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -164,7 +165,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_tf_015',
+      id: 'lec01_tf_015',
       chapter: 1,
       source: 'testbank',
       type: 'tf',
@@ -177,7 +178,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== MULTIPLE CHOICE ====================
     {
-      id: 'ch01_mcq_001',
+      id: 'lec01_mcq_001',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -193,7 +194,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_002',
+      id: 'lec01_mcq_002',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -209,7 +210,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_003',
+      id: 'lec01_mcq_003',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -225,7 +226,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_004',
+      id: 'lec01_mcq_004',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -241,7 +242,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_005',
+      id: 'lec01_mcq_005',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -257,7 +258,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_006',
+      id: 'lec01_mcq_006',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -273,7 +274,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_007',
+      id: 'lec01_mcq_007',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -289,7 +290,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_008',
+      id: 'lec01_mcq_008',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -305,7 +306,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_009',
+      id: 'lec01_mcq_009',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -321,7 +322,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_010',
+      id: 'lec01_mcq_010',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -337,7 +338,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_011',
+      id: 'lec01_mcq_011',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -353,7 +354,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_012',
+      id: 'lec01_mcq_012',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -369,7 +370,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_013',
+      id: 'lec01_mcq_013',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -385,7 +386,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_014',
+      id: 'lec01_mcq_014',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -401,7 +402,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_mcq_015',
+      id: 'lec01_mcq_015',
       chapter: 1,
       source: 'testbank',
       type: 'mcq',
@@ -419,7 +420,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== FILL IN THE BLANK ====================
     {
-      id: 'ch01_fill_001',
+      id: 'lec01_fill_001',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -429,7 +430,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_002',
+      id: 'lec01_fill_002',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -439,7 +440,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_003',
+      id: 'lec01_fill_003',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -449,7 +450,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_004',
+      id: 'lec01_fill_004',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -459,7 +460,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_005',
+      id: 'lec01_fill_005',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -469,7 +470,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_006',
+      id: 'lec01_fill_006',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -479,7 +480,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_007',
+      id: 'lec01_fill_007',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -489,7 +490,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_008',
+      id: 'lec01_fill_008',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -499,7 +500,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_009',
+      id: 'lec01_fill_009',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -509,7 +510,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_010',
+      id: 'lec01_fill_010',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -519,7 +520,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_011',
+      id: 'lec01_fill_011',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -529,7 +530,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_012',
+      id: 'lec01_fill_012',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -539,7 +540,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_013',
+      id: 'lec01_fill_013',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -549,7 +550,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_014',
+      id: 'lec01_fill_014',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -559,7 +560,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'ch01_fill_015',
+      id: 'lec01_fill_015',
       chapter: 1,
       source: 'testbank',
       type: 'fill',
@@ -570,5 +571,5 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
     },
   ];
 
-  window.ALL_QUESTIONS.push(...ch01);
+  window.ALL_QUESTIONS.push(...lec01);
 })();

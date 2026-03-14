@@ -14,26 +14,25 @@
 
 ```
 OS/
-├── index.html              # Single-page app: home screen, quiz screen, settings modal
-├── AI_CONTEXT.md           # This file (AI reference)
-├── GUIDE.md                # Human guide for adding/editing questions
+├── index.html              # Single-page app
+├── AI_CONTEXT.md
+├── GUIDE.md
 ├── css/
-│   └── style.css           # All styles, CSS variables for dark/light theming, responsive
+│   └── style.css
 ├── js/
-│   ├── app.js              # Main application logic (screens, quiz engine, events, UI)
-│   ├── storage.js          # localStorage abstraction (solved, theme, prefs, import/export)
-│   └── questions/
-│       ├── ch01.js          # Chapter 01 questions (has sample data)
-│       ├── ch02.js          # Chapter 02 questions (empty template)
-│       ├── ch03.js          # Chapter 03 questions (empty template)
-│       ├── ch04.js          # Chapter 04 questions (empty template)
-│       ├── ch05.js          # Chapter 05 questions (empty template)
-│       ├── ch06.js          # Chapter 06 questions (empty template)
-│       ├── ch07.js          # Chapter 07 questions (empty template)
-│       ├── ch08.js          # Chapter 08 questions (empty template)
-│       ├── ch09.js          # Chapter 09 questions (empty template)
-│       └── ch10.js          # Chapter 10 questions (empty template)
-└── images/                  # Directory for figure question images
+│   ├── app.js              # Main app logic; TOTAL_CHAPTERS=4; labels say "Lecture"/"Lec"
+│   ├── storage.js
+│   ├── testbank/
+│   │   ├── lec01.js        # Lec01 testbank (fixed: 15 TF + 15 MCQ + 15 Fill)
+│   │   ├── lec02.js
+│   │   ├── lec03.js
+│   │   └── lec04.js
+│   └── student/
+│       ├── lec01.js        # Lec01 student questions (empty, grows over time)
+│       ├── lec02.js
+│       ├── lec03.js
+│       └── lec04.js
+└── images/
 ```
 
 ## Architecture
@@ -122,25 +121,27 @@ Each question is a JS object pushed into `window.ALL_QUESTIONS`:
 
 ## ID Convention
 
-Question IDs follow the pattern: `ch{NN}_{type}_{NNN}`
+Question IDs follow the pattern: `lec{NN}_{type}_{NNN}`
 
-- `NN` = zero-padded chapter number (01-10)
+- `NN` = zero-padded lecture number (01-04)
 - `type` = question type (mcq, tf, list, define, fill)
-- `NNN` = zero-padded sequential number within that chapter+type combo
+- `NNN` = zero-padded sequential number within that lecture+type combo
 
-Examples: `ch01_mcq_001`, `ch03_tf_002`, `ch07_list_005`
+Examples: `lec01_mcq_001`, `lec03_tf_002`, `lec04_list_005`
 
-## Adding New Chapters
+## Adding New Lectures
 
-If more than 10 chapters are needed:
-1. Create `js/questions/ch11.js` (follow existing template)
-2. Add `<script src="js/questions/ch11.js"></script>` in `index.html` before `storage.js`
-3. Update `TOTAL_CHAPTERS` constant in `app.js`
+If more than 4 lectures are needed:
+1. Create `js/testbank/lec05.js` (copy `lec01.js` as template)
+2. Create `js/student/lec05.js` (copy `lec01.js` as template)
+3. Add both `<script>` tags in `index.html` before `storage.js`
+4. Update `TOTAL_CHAPTERS = 4` to `TOTAL_CHAPTERS = 5` in `app.js`
 
 ## Notes
 
-- No build step required — just serve the files
-- All question files are loaded via `<script>` tags in `index.html`
-- Questions auto-register into `window.ALL_QUESTIONS` via IIFE push pattern
-- Each chapter file is self-contained and can be edited independently
+- No build step — serve files directly
+- Testbank loaded before student per lecture in `index.html`
+- `_testbank` files are fixed; `_student` files grow over time
+- `TOTAL_CHAPTERS = 4` in `app.js`; UI says "Lecture" / badge says "Lec"
+- `chapter` field in question objects stays as integer (1–4)
 - The solved state auto-saves on answer (MCQ/TF) or reveal (list/define/fill)

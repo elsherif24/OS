@@ -6,18 +6,23 @@ This guide explains how to add new questions, edit existing ones, and manage fig
 
 ## 📁 Where Are the Questions?
 
-All questions live in JavaScript files inside:
+All questions live in two folders:
 
 ```
-js/questions/
-├── ch01.js
-├── ch02.js
-├── ch03.js
-├── ...
-└── ch10.js
+js/
+├── testbank/
+│   ├── lec01.js   ← testbank questions (fixed, do not edit)
+│   ├── lec02.js
+│   ├── lec03.js
+│   └── lec04.js
+└── student/
+    ├── lec01.js   ← your questions for lecture 01 (add here)
+    ├── lec02.js
+    ├── lec03.js
+    └── lec04.js
 ```
 
-Each file corresponds to one chapter. Open the file for the chapter you want to edit.
+**Always add student questions to the `js/student/` file**, never to the `js/testbank/` file.
 
 ---
 
@@ -26,17 +31,17 @@ Each file corresponds to one chapter. Open the file for the chapter you want to 
 Every question needs a **unique ID**. Follow this pattern:
 
 ```
-ch{NN}_{type}_{NNN}
+lec{NN}_{type}_{NNN}
 ```
 
-- `NN` — Chapter number, zero-padded (01, 02, ... 10)
+- `NN` — Lecture number, zero-padded (01, 02, 03, 04)
 - `type` — One of: `mcq`, `tf`, `list`, `define`, `fill`
 - `NNN` — Sequential number, zero-padded (001, 002, 003, ...)
 
 **Examples:**
-- `ch01_mcq_001`
-- `ch05_tf_003`
-- `ch10_list_012`
+- `lec01_mcq_001`
+- `lec03_tf_003`
+- `lec04_list_012`
 
 > ⚠️ IDs must be unique across the entire project. If two questions share the same ID, things will break.
 
@@ -48,7 +53,7 @@ ch{NN}_{type}_{NNN}
 
 ```js
 {
-  id: 'ch01_mcq_001',
+  id: 'lec01_mcq_001',
   chapter: 1,
   source: 'testbank',
   type: 'mcq',
@@ -76,7 +81,7 @@ ch{NN}_{type}_{NNN}
 
 ```js
 {
-  id: 'ch01_tf_001',
+  id: 'lec01_tf_001',
   chapter: 1,
   source: 'testbank',
   type: 'tf',
@@ -98,7 +103,7 @@ ch{NN}_{type}_{NNN}
 
 ```js
 {
-  id: 'ch01_list_001',
+  id: 'lec01_list_001',
   chapter: 1,
   source: 'student',
   type: 'list',
@@ -123,7 +128,7 @@ ch{NN}_{type}_{NNN}
 
 ```js
 {
-  id: 'ch01_define_001',
+  id: 'lec01_define_001',
   chapter: 1,
   source: 'student',
   type: 'define',
@@ -143,7 +148,7 @@ ch{NN}_{type}_{NNN}
 
 ```js
 {
-  id: 'ch01_fill_001',
+  id: 'lec01_fill_001',
   chapter: 1,
   source: 'testbank',
   type: 'fill',
@@ -169,26 +174,26 @@ Any question type can include an image. Just:
 
 ```js
 {
-  id: 'ch03_mcq_005',
+  id: 'lec03_mcq_005',
   chapter: 3,
   source: 'testbank',
   type: 'mcq',
   question: 'Based on the diagram above, what type of scheduling is shown?',
   choices: ['FCFS', 'SJF', 'Round Robin', 'Priority'],
   answer: 2,
-  figure: 'images/ch03_scheduling_diagram.png',
+  figure: 'images/lec03_scheduling_diagram.png',
 },
 ```
 
 > The image will appear above the question text.
 
-**Image naming suggestion:** `ch{NN}_description.png` (e.g., `ch03_scheduling_diagram.png`)
+**Image naming suggestion:** `lec{NN}_description.png` (e.g., `lec03_scheduling_diagram.png`)
 
 ---
 
 ## ✏️ How to Edit an Existing Question
 
-1. Open the chapter file (e.g., `js/questions/ch01.js`)
+1. Open the chapter file (e.g., `js/student/lec01.js`)
 2. Find the question by its `id`
 3. Change whatever you need (question text, choices, answer, etc.)
 4. Save the file — that's it
@@ -197,27 +202,28 @@ Any question type can include an image. Just:
 
 ## ➕ How to Add a New Question
 
-1. Open the chapter file (e.g., `js/questions/ch05.js`)
-2. Find the array (e.g., `const ch05 = [...]`)
-3. Add your new question object inside the array
+1. Open the lecture's **student** file (e.g., `js/student/lec03.js`)
+2. Find the array (e.g., `const lec03_student = [...]`)
+3. Add your new question object inside the array, under the correct section comment
 4. Make sure the `id` is unique and follows the naming convention
 5. Make sure you have a comma after the closing `}` of the previous question
 6. Save the file
 
-**Example — adding a question to ch05.js:**
+**Example — adding a question to js/student/lec03.js:**
 
 ```js
-const ch05 = [
+const lec03_student = [
   // ... existing questions ...
 
   {
-    id: 'ch05_mcq_010',
-    chapter: 5,
+    id: 'lec03_mcq_s010',
+    chapter: 3,
     source: 'student',
     type: 'mcq',
     question: 'Your new question goes here?',
     choices: ['Option A', 'Option B', 'Option C', 'Option D'],
     answer: 1,
+    hint: null,
     figure: null,
   },
 ];
@@ -265,13 +271,15 @@ python3 -m http.server 8000
 
 ---
 
-## 🗂️ Adding a New Chapter (Ch 11+)
+## 🗂️ Adding a New Lecture (5+)
 
-If you ever need more than 10 chapters:
+If you ever need more than 4 lectures:
 
-1. Create `js/questions/ch11.js` — copy any existing chapter file as a template
-2. Open `index.html` and add before the `storage.js` script tag:
+1. Create `js/testbank/lec05.js` — copy `js/testbank/lec01.js` as a template
+2. Create `js/student/lec05.js` — copy `js/student/lec01.js` as a template
+3. Open `index.html` and add before the `storage.js` script tag:
    ```html
-   <script src="js/questions/ch11.js"></script>
+   <script src="js/testbank/lec05.js"></script>
+   <script src="js/student/lec05.js"></script>
    ```
-3. Open `js/app.js` and change `TOTAL_CHAPTERS = 10` to `TOTAL_CHAPTERS = 11`
+4. Open `js/app.js` and change `TOTAL_CHAPTERS = 4` to `TOTAL_CHAPTERS = 5`

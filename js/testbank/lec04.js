@@ -1,7 +1,4 @@
 // ===== LECTURE 04: Threads — TESTBANK =====
-// Source: Operating Systems Internals and Design Principles, 8th Edition
-// Testbank questions only. For student-added questions see js/student/lec04.js
-// See GUIDE.md for how to add/edit questions.
 
 if (typeof window.ALL_QUESTIONS === 'undefined') {
   window.ALL_QUESTIONS = [];

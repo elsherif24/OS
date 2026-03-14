@@ -1,7 +1,4 @@
 // ===== LECTURE 02: Operating System Overview — TESTBANK =====
-// Source: Operating Systems Internals and Design Principles, 8th Edition
-// Testbank questions only. For student-added questions see js/student/lec02.js
-// See GUIDE.md for how to add/edit questions.
 
 if (typeof window.ALL_QUESTIONS === 'undefined') {
   window.ALL_QUESTIONS = [];

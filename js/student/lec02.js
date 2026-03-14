@@ -10,9 +10,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
   const lec02_student = [
     // ==================== TRUE / FALSE ====================
     // {
-    //   id: 'lec02_tf_s001',
-    //   chapter: 1,
-    //   source: 'student',
     //   type: 'tf',
     //   question: 'Statement goes here.',
     //   choices: ['True', 'False'],
@@ -23,9 +20,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== MULTIPLE CHOICE ====================
     // {
-    //   id: 'lec02_mcq_s001',
-    //   chapter: 1,
-    //   source: 'student',
     //   type: 'mcq',
     //   question: 'Question text here?',
     //   choices: ['Option A', 'Option B', 'Option C', 'Option D'],
@@ -36,9 +30,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== LIST ====================
     // {
-    //   id: 'lec02_list_s001',
-    //   chapter: 1,
-    //   source: 'student',
     //   type: 'list',
     //   question: 'List the ...',
     //   choices: null,
@@ -48,9 +39,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== DEFINE ====================
     // {
-    //   id: 'lec02_define_s001',
-    //   chapter: 1,
-    //   source: 'student',
     //   type: 'define',
     //   question: 'Define ...',
     //   choices: null,
@@ -60,9 +48,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== FILL IN THE BLANK ====================
     // {
-    //   id: 'lec02_fill_s001',
-    //   chapter: 1,
-    //   source: 'student',
     //   type: 'fill',
     //   question: 'The ________ does something.',
     //   choices: null,

@@ -7,7 +7,7 @@ const STORAGE_KEYS = {
 };
 
 // ===== STORAGE MODULE =====
-const Storage = (() => {
+export const Storage = (() => {
   // --- Solved Questions ---
 
   function getSolved() {

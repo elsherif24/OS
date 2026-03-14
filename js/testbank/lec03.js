@@ -1,7 +1,4 @@
 // ===== LECTURE 03: Process Description and Control — TESTBANK =====
-// Source: Operating Systems Internals and Design Principles, 8th Edition
-// Testbank questions only. For student-added questions see js/student/lec03.js
-// See GUIDE.md for how to add/edit questions.
 
 if (typeof window.ALL_QUESTIONS === 'undefined') {
   window.ALL_QUESTIONS = [];
@@ -23,7 +20,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       question: 'For efficiency, applications should be written directly for a given hardware platform.',
       choices: ['True', 'False'],
       answer: 1,
-      hint: 'Applications are written to run on top of the OS, not directly on hardware. The OS provides abstraction and portability.',
+      hint: 'a. Numerous applications can be developed for the same platform. Thus it makes sense to develop common routines for accessing the computer\'s resources',
       figure: null,
     },
     {

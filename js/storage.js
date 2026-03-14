@@ -47,8 +47,8 @@ const Storage = (() => {
     return getSolved().includes(questionId);
   }
 
-  function resetChapterSolved(chapterNum) {
-    const prefix = `ch${String(chapterNum).padStart(2, '0')}_`;
+  function resetLectureSolved(lectureNum) {
+    const prefix = `lec_${String(lectureNum).padStart(2, '0')}_`;
     const solved = getSolved().filter((id) => !id.startsWith(prefix));
     setSolved(solved);
   }
@@ -61,8 +61,8 @@ const Storage = (() => {
     return getSolved().length;
   }
 
-  function getSolvedCountForChapter(chapterNum) {
-    const prefix = `ch${String(chapterNum).padStart(2, '0')}_`;
+  function getSolvedCountForLecture(lectureNum) {
+    const prefix = `lec_${String(lectureNum).padStart(2, '0')}_`;
     return getSolved().filter((id) => id.startsWith(prefix)).length;
   }
 
@@ -105,8 +105,8 @@ const Storage = (() => {
     return getWrong().includes(questionId);
   }
 
-  function resetChapterWrong(chapterNum) {
-    const prefix = `ch${String(chapterNum).padStart(2, '0')}_`;
+  function resetLectureWrong(lectureNum) {
+    const prefix = `lec_${String(lectureNum).padStart(2, '0')}_`;
     const wrong = getWrong().filter((id) => !id.startsWith(prefix));
     setWrong(wrong);
   }
@@ -119,16 +119,16 @@ const Storage = (() => {
     return getWrong().length;
   }
 
-  function getWrongCountForChapter(chapterNum) {
-    const prefix = `ch${String(chapterNum).padStart(2, '0')}_`;
+  function getWrongCountForLecture(lectureNum) {
+    const prefix = `lec_${String(lectureNum).padStart(2, '0')}_`;
     return getWrong().filter((id) => id.startsWith(prefix)).length;
   }
 
   // --- Combined Reset (solved + wrong) ---
 
-  function resetChapter(chapterNum) {
-    resetChapterSolved(chapterNum);
-    resetChapterWrong(chapterNum);
+  function resetLecture(lectureNum) {
+    resetLectureSolved(lectureNum);
+    resetLectureWrong(lectureNum);
   }
 
   function resetAll() {
@@ -217,20 +217,20 @@ const Storage = (() => {
     markSolved,
     unmarkSolved,
     isSolved,
-    resetChapterSolved,
+    resetLectureSolved,
     resetAllSolved,
     getSolvedCount,
-    getSolvedCountForChapter,
+    getSolvedCountForLecture,
     getWrong,
     setWrong,
     markWrong,
     unmarkWrong,
     isWrong,
-    resetChapterWrong,
+    resetLectureWrong,
     resetAllWrong,
     getWrongCount,
-    getWrongCountForChapter,
-    resetChapter,
+    getWrongCountForLecture,
+    resetLecture,
     resetAll,
     getTheme,
     setTheme,

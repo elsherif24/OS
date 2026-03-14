@@ -11,9 +11,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
   const lec01 = [
     // ==================== TRUE / FALSE ====================
     {
-      id: 'lec01_tf_001',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'The processor controls the operation of the computer and performs its data processing functions.',
       choices: ['True', 'False'],
@@ -22,9 +19,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_002',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'It is not possible for a communications interrupt to occur while a printer interrupt is being processed.',
       choices: ['True', 'False'],
@@ -33,9 +27,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_003',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'A system bus transfers data between the computer and its external environment.',
       choices: ['True', 'False'],
@@ -44,9 +35,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_004',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'Cache memory is invisible to the OS.',
       choices: ['True', 'False'],
@@ -55,9 +43,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_005',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'With interrupts, the processor can not be engaged in executing other instructions while an I/O operation is in progress.',
       choices: ['True', 'False'],
@@ -66,9 +51,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_006',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'Digital Signal Processors deal with streaming signals such as audio and video.',
       choices: ['True', 'False'],
@@ -77,9 +59,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_007',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'The fetched instruction is loaded into the Program Counter.',
       choices: ['True', 'False'],
@@ -88,9 +67,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_008',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'Interrupts are provided primarily as a way to improve processor utilization.',
       choices: ['True', 'False'],
@@ -99,9 +75,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_009',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'The interrupt can occur at any time and therefore at any point in the execution of a user program.',
       choices: ['True', 'False'],
@@ -110,9 +83,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_010',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'Over the years memory access speed has consistently increased more rapidly than processor speed.',
       choices: ['True', 'False'],
@@ -121,9 +91,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_011',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'An SMP can be defined as a stand-alone computer system with two or more similar processors of comparable capability.',
       choices: ['True', 'False'],
@@ -132,9 +99,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_012',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'The Program Status Word contains status information in the form of condition codes, which are bits typically set by the programmer as a result of program operation.',
       choices: ['True', 'False'],
@@ -143,9 +107,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_013',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'An example of a multicore system is the Intel Core i7.',
       choices: ['True', 'False'],
@@ -154,9 +115,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_014',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'In a two-level memory hierarchy the Hit Ratio is defined as the fraction of all memory accesses found in the slower memory.',
       choices: ['True', 'False'],
@@ -165,9 +123,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_tf_015',
-      chapter: 1,
-      source: 'testbank',
       type: 'tf',
       question: 'The operating system acts as an interface between the computer hardware and the human user.',
       choices: ['True', 'False'],
@@ -178,9 +133,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== MULTIPLE CHOICE ====================
     {
-      id: 'lec01_mcq_001',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'The four main structural elements of a computer system are:',
       choices: [
@@ -194,9 +146,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_002',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'The __________ holds the address of the next instruction to be fetched.',
       choices: [
@@ -210,9 +159,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_003',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'The __________ contains the data to be written into memory and receives the data read from memory.',
       choices: [
@@ -226,9 +172,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_004',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'Instruction processing consists of two steps:',
       choices: [
@@ -242,9 +185,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_005',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'The ___________ routine determines the nature of the interrupt and performs whatever actions are needed.',
       choices: [
@@ -258,9 +198,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_006',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'The unit of data exchanged between cache and main memory is __________ .',
       choices: [
@@ -274,9 +211,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_007',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'The _________ chooses which block to replace when a new block is to be loaded into the cache and the cache already has all slots filled with other blocks.',
       choices: [
@@ -290,9 +224,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_008',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: '__________ is more efficient than interrupt-driven or programmed I/O for a multiple-word I/O transfer.',
       choices: [
@@ -306,9 +237,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_009',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'The __________ is a point-to-point link electrical interconnect specification that enables high-speed communications among connected processor chips.',
       choices: [
@@ -322,9 +250,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_010',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'Small, fast memory located between the processor and main memory is called:',
       choices: [
@@ -338,9 +263,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_011',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'In a uniprocessor system, multiprogramming increases processor efficiency by:',
       choices: [
@@ -354,9 +276,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_012',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'The two basic types of processor registers are:',
       choices: [
@@ -370,9 +289,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_013',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'When an external device becomes ready to be serviced by the processor the device sends a(n) _________ signal to the processor.',
       choices: [
@@ -386,9 +302,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_014',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'One mechanism Intel uses to make its caches more effective is __________ , in which the hardware examines memory access patterns and attempts to fill the caches speculatively with data that is likely to be requested soon.',
       choices: [
@@ -402,9 +315,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_mcq_015',
-      chapter: 1,
-      source: 'testbank',
       type: 'mcq',
       question: 'A __________ organization has a number of potential advantages over a uniprocessor organization including performance, availability, incremental growth, and scaling.',
       choices: [
@@ -420,9 +330,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== FILL IN THE BLANK ====================
     {
-      id: 'lec01_fill_001',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'The invention of the _________ was the hardware revolution that brought about desktop and handheld computing.',
       choices: null,
@@ -430,9 +337,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_002',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'To satisfy the requirements of handheld devices, the classic microprocessor is giving way to the _________ , where not just the CPUs and caches are on the same chip, but also many of the other components of the system, such as DSPs, GPUs, I/O devices and main memory.',
       choices: null,
@@ -440,9 +344,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_003',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'The processing required for a single instruction is called a(n) __________ cycle.',
       choices: null,
@@ -450,9 +351,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_004',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'The fetched instruction is loaded into the __________ .',
       choices: null,
@@ -460,9 +358,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_005',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'When an external device is ready to accept more data from the processor, the I/O module for that external device sends an __________ signal to the processor.',
       choices: null,
@@ -470,9 +365,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_006',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'The __________ is a device for staging the movement of data between main memory and processor registers to improve performance and is not usually visible to the programmer or processor.',
       choices: null,
@@ -480,9 +372,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_007',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'External, nonvolatile memory is also referred to as __________ or auxiliary memory.',
       choices: null,
@@ -490,9 +379,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_008',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'When a new block of data is read into the cache the __________ determines which cache location the block will occupy.',
       choices: null,
@@ -500,9 +386,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_009',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'In a _________ multiprocessor all processors can perform the same functions so the failure of a single processor does not halt the machine.',
       choices: null,
@@ -510,9 +393,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_010',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'A __________ computer combines two or more processors on a single piece of silicon.',
       choices: null,
@@ -520,9 +400,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_011',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'A Control/Status register that contains the address of the next instruction to be fetched is called the _________.',
       choices: null,
@@ -530,9 +407,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_012',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'Each location in Main Memory contains a _________ value that can be interpreted as either an instruction or data.',
       choices: null,
@@ -540,9 +414,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_013',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'A special type of address register required by a system that implements user visible stack addressing is called a __________ .',
       choices: null,
@@ -550,9 +421,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_014',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'Registers that are used by system programs to minimize main memory references by optimizing register use are called __________ .',
       choices: null,
@@ -560,9 +428,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec01_fill_015',
-      chapter: 1,
-      source: 'testbank',
       type: 'fill',
       question: 'The concept of multiple programs taking turns in execution is known as __________.',
       choices: null,
@@ -571,5 +436,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
     },
   ];
 
-  window.ALL_QUESTIONS.push(...lec01);
+  const LECTURE = 1;
+  const SOURCE = 'testbank';
+  window.ALL_QUESTIONS.push(...lec01.map(q => ({ ...q, lecture: LECTURE, source: SOURCE })));
 })();

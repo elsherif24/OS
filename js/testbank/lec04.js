@@ -11,9 +11,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
   const lec04 = [
     // ==================== TRUE / FALSE ====================
     {
-      id: 'lec04_tf_001',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'The OS performs a protection function to prevent unwanted interference between processes with respect to resources.',
       choices: ['True', 'False'],
@@ -22,9 +19,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_002',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'Windows process design is driven by the need to provide support for a variety of OS environments.',
       choices: ['True', 'False'],
@@ -33,9 +27,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_003',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'The unit of dispatching is usually referred to as a process or task.',
       choices: ['True', 'False'],
@@ -44,9 +35,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_004',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'In a multithreaded environment there are separate stacks for each thread, as well as a separate control block for each thread.',
       choices: ['True', 'False'],
@@ -55,9 +43,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_005',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'It takes less time to terminate a process than a thread.',
       choices: ['True', 'False'],
@@ -66,9 +51,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_006',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'If there is an application or function that should be implemented as a set of related units of execution, it is far more efficient to do so as a collection of separate processes rather than a collection of threads.',
       choices: ['True', 'False'],
@@ -77,9 +59,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_007',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'An example of an application that could make use of threads is a file server.',
       choices: ['True', 'False'],
@@ -88,9 +67,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_008',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'Termination of a process does not terminate all threads within that process.',
       choices: ['True', 'False'],
@@ -99,9 +75,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_009',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'If a process is swapped out, all of its threads are necessarily swapped out because they all share the address space of the process.',
       choices: ['True', 'False'],
@@ -110,9 +83,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_010',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'On a uniprocessor, multiprogramming does not enable the interleaving of multiple threads within multiple processes.',
       choices: ['True', 'False'],
@@ -121,9 +91,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_011',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'Any alteration of a resource by one thread affects the environment of the other threads in the same process.',
       choices: ['True', 'False'],
@@ -132,9 +99,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_012',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'In a pure ULT facility, all of the work of thread management is done by the application, and the kernel is not aware of the existence of threads.',
       choices: ['True', 'False'],
@@ -143,9 +107,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_013',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'As a default, the kernel dispatcher uses the policy of hard affinity in assigning threads to processors.',
       choices: ['True', 'False'],
@@ -154,9 +115,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_014',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'Windows is an example of a kernel-level thread approach.',
       choices: ['True', 'False'],
@@ -165,9 +123,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_tf_015',
-      chapter: 4,
-      source: 'testbank',
       type: 'tf',
       question: 'The potential performance benefits of a multicore organization depend on the ability to effectively exploit the parallel resources available to the application.',
       choices: ['True', 'False'],
@@ -178,9 +133,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== MULTIPLE CHOICE ====================
     {
-      id: 'lec04_mcq_001',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'The traditional approach of a single thread of execution per process, in which the concept of a thread is not recognized, is referred to as a __________ .',
       choices: [
@@ -194,9 +146,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_002',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'The idea of having a many-to-many relationship between threads and processes has been explored in the experimental operating system _________ .',
       choices: [
@@ -210,9 +159,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_003',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'In a multithreaded environment, a __________ is defined as the unit of resource allocation and a unit of protection.',
       choices: [
@@ -226,9 +172,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_004',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'The principal disadvantage of the _________ approach is that the transfer of control from one thread to another within the same process requires a mode switch to the kernel.',
       choices: [
@@ -242,9 +185,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_005',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: '_________ is a good example of an OS using a combined ULT/KLT approach.',
       choices: [
@@ -258,9 +198,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_006',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'A _________ is a single execution path with an execution stack, processor state, and scheduling information.',
       choices: [
@@ -274,9 +211,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_007',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: '__________ are characterized by the presence of many single-threaded processes.',
       choices: [
@@ -290,9 +224,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_008',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'A __________ is a dispatchable unit of work that executes sequentially and is interruptible so that the processor can turn to another thread.',
       choices: [
@@ -306,9 +237,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_009',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'A __________ is an entity corresponding to a user job or application that owns resources such as memory and open files.',
       choices: [
@@ -322,9 +250,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_010',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'A ________ is a user-created unit of execution within a process.',
       choices: [
@@ -338,9 +263,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_011',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'A Windows process must contain at least _________ thread(s) to execute.',
       choices: [
@@ -354,9 +276,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_012',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'A thread enters the _________ state, after waiting, if it is ready to run but the resources are not available.',
       choices: [
@@ -370,9 +289,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_013',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'The _________ are the fundamental entities that can be scheduled and dispatched to run on one of the system processors.',
       choices: [
@@ -386,9 +302,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_014',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'The __________ state is when the thread has terminated.',
       choices: [
@@ -402,9 +315,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_mcq_015',
-      chapter: 4,
-      source: 'testbank',
       type: 'mcq',
       question: 'The blocked state in which the process is waiting for an event, such as the end of an I/O operation, the availability of a resource, or a signal from another process is the _________ state.',
       choices: [
@@ -420,9 +330,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== FILL IN THE BLANK ====================
     {
-      id: 'lec04_fill_001',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'The __________ is the collection of program, data, stack, and attributes defined in the process control block.',
       choices: null,
@@ -430,9 +337,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_002',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: '__________ refers to the ability of an OS to support multiple, concurrent paths of execution within a single process.',
       choices: null,
@@ -440,9 +344,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_003',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'The key states for a thread are: Running, _________, and Blocked.',
       choices: null,
@@ -450,9 +351,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_004',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'There are four basic thread operations associated with a change in thread state: Block, Unblock, Finish, and _________ .',
       choices: null,
@@ -460,9 +358,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_005',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'There are two broad categories of thread implementation: user-level threads (ULTs) and _________ .',
       choices: null,
@@ -470,9 +365,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_006',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'A way to overcome the problem of blocking threads is to use a technology referred to as __________ , which converts a blocking system call into a nonblocking system call.',
       choices: null,
@@ -480,9 +372,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_007',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'A __________ is a static entity, consisting of an address space and ports through which messages may be sent and received.',
       choices: null,
@@ -490,9 +379,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_008',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'Windows makes use of two types of process-related objects: processes and _________ .',
       choices: null,
@@ -500,9 +386,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_009',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'The __________ Windows Process Object Attribute describes who created an object, who can gain access to or use the object, and who is denied access to the object.',
       choices: null,
@@ -510,9 +393,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_010',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'The six states of a Windows thread are: Ready, Standby, Running, Waiting, Transition, and _________ .',
       choices: null,
@@ -520,9 +400,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_011',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'Most operating systems contain two fundamental forms of concurrent activity: processes and _________ .',
       choices: null,
@@ -530,9 +407,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_012',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'A process or task in Linux is represented by a __________ data structure.',
       choices: null,
@@ -540,9 +414,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_013',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'The Clouds operating system implements the concept of a thread as primarily an entity that can move among address spaces which represents the __________ Thread-to-Process relationship.',
       choices: null,
@@ -550,9 +421,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_014',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'It is necessary to __________ the activities of various threads so they do not interfere with each other or corrupt data structures.',
       choices: null,
@@ -560,9 +428,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec04_fill_015',
-      chapter: 4,
-      source: 'testbank',
       type: 'fill',
       question: 'The basic form of communication between processes or threads in a microkernel operating system is _________ .',
       choices: null,
@@ -571,5 +436,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
     },
   ];
 
-  window.ALL_QUESTIONS.push(...lec04);
+  const LECTURE = 4;
+  const SOURCE = 'testbank';
+  window.ALL_QUESTIONS.push(...lec04.map(q => ({ ...q, lecture: LECTURE, source: SOURCE })));
 })();

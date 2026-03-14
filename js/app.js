@@ -531,7 +531,7 @@ const App = (() => {
 
   function resetLectureProgress() {
     const lectureNum = parseInt(DOM.resetChapterSelect.value, 10);
-    Storage.resetChapter(lectureNum);
+    Storage.resetLecture(lectureNum);
     updateQuestionCount();
     showToast(`Lecture ${String(lectureNum).padStart(2, '0')} progress reset`);
   }

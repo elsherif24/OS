@@ -71,5 +71,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
     // },
   ];
 
-  window.ALL_QUESTIONS.push(...lec04_student);
+  const LECTURE = 4;
+  const SOURCE = 'student';
+  window.ALL_QUESTIONS.push(...lec04_student.map(q => ({ ...q, lecture: LECTURE, source: SOURCE })));
 })();

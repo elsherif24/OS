@@ -11,9 +11,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
   const lec02 = [
     // ==================== TRUE / FALSE ====================
     {
-      id: 'lec02_tf_001',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'An OS should be constructed in such a way as to permit the effective development, testing, and introduction of new system functions without interfering with service.',
       choices: ['True', 'False'],
@@ -22,9 +19,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_002',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'The OS masks the details of the hardware from the programmer and provides the programmer with a convenient interface for using the system.',
       choices: ['True', 'False'],
@@ -33,9 +27,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_003',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'The ABI gives a program access to the hardware resources and services available in a system through the user ISA.',
       choices: ['True', 'False'],
@@ -44,9 +35,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_004',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'The OS frequently relinquishes control and must depend on the processor to allow it to regain control.',
       choices: ['True', 'False'],
@@ -55,9 +43,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_005',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'One of the driving forces in operating system evolution is advancement in the underlying hardware technology.',
       choices: ['True', 'False'],
@@ -66,9 +51,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_006',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'The processor itself is not a resource so the OS is not involved in determining how much of the processor time is devoted to the execution of a user program.',
       choices: ['True', 'False'],
@@ -77,9 +59,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_007',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'A process consists of three components: an executable program, the associated data needed by the program, and the execution context of the program.',
       choices: ['True', 'False'],
@@ -88,9 +67,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_008',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'Uniprogramming typically provides better utilization of system resources than multiprogramming.',
       choices: ['True', 'False'],
@@ -99,9 +75,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_009',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'A monolithic kernel is implemented as a single process with all elements sharing the same address space.',
       choices: ['True', 'False'],
@@ -110,9 +83,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_010',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'The user has direct access to the processor with a batch-processing type of OS.',
       choices: ['True', 'False'],
@@ -121,9 +91,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_011',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'Both batch processing and time-sharing use multiprogramming.',
       choices: ['True', 'False'],
@@ -132,9 +99,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_012',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'The phrase "control is passed to a job" means that the processor is now fetching and executing instructions from the monitor program.',
       choices: ['True', 'False'],
@@ -143,9 +107,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_013',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'In a time-sharing system, a user\'s program is preempted at regular intervals, but due to relatively slow human reaction time this occurrence is usually transparent to the user.',
       choices: ['True', 'False'],
@@ -154,9 +115,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_014',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'The principle objective of Batch Multiprogramming is to minimize response time.',
       choices: ['True', 'False'],
@@ -165,9 +123,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_tf_015',
-      chapter: 2,
-      source: 'testbank',
       type: 'tf',
       question: 'Virtualization technology enables a single PC or server to simultaneously run multiple operating systems or multiple sessions of a single OS.',
       choices: ['True', 'False'],
@@ -178,9 +133,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== MULTIPLE CHOICE ====================
     {
-      id: 'lec02_mcq_001',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'The __________ is the interface that is the boundary between hardware and software.',
       choices: [
@@ -194,9 +146,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_002',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'A(n) __________ is a set of resources for the movement, storage, and processing of data and for the control of these functions.',
       choices: [
@@ -210,9 +159,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_003',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'The operating system\'s __________ refers to its inherent flexibility in permitting functional modifications to the system without interfering with service.',
       choices: [
@@ -226,9 +172,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_004',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'Operating systems must evolve over time because:',
       choices: [
@@ -242,9 +185,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_005',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'A special type of programming language used to provide instructions to the monitor is __________ .',
       choices: [
@@ -258,9 +198,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_006',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'Hardware features desirable in a batch-processing operating system include memory protection, timer, privileged instructions, and __________ .',
       choices: [
@@ -274,9 +211,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_007',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'A user program executes in a __________ , in which certain areas of memory are protected from the user\'s use, and in which certain instructions may not be executed.',
       choices: [
@@ -290,9 +224,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_008',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'Multiprogramming operating systems are fairly sophisticated compared to single-program or _________ systems.',
       choices: [
@@ -306,9 +237,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_009',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'One of the first time-sharing operating systems to be developed was the __________ .',
       choices: [
@@ -322,9 +250,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_010',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'The technique where a system clock generates interrupts, and at each clock interrupt the OS regains control and assigns the processor to another user, is __________ .',
       choices: [
@@ -338,9 +263,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_011',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'The __________ is the internal data by which the OS is able to supervise and control the process.',
       choices: [
@@ -354,9 +276,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_012',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: '__________ is where the OS must prevent independent processes from interfering with each other\'s memory, both data and instructions.',
       choices: [
@@ -370,9 +289,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_013',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: '__________ is concerned with the proper verification of the identity of users and the validity of messages or data.',
       choices: [
@@ -386,9 +302,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_014',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'A common strategy to give each process in the queue some time in turn is referred to as a __________ technique.',
       choices: [
@@ -402,9 +315,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_mcq_015',
-      chapter: 2,
-      source: 'testbank',
       type: 'mcq',
       question: 'The key to the success of Linux has been its character as a free software package available under the auspice of the ___________ .',
       choices: [
@@ -420,9 +330,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== FILL IN THE BLANK ====================
     {
-      id: 'lec02_fill_001',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'An __________ is a program that controls the execution of application programs and acts as an interface between applications and the computer hardware.',
       choices: null,
@@ -430,9 +337,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_002',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'The portion of the monitor that is always in main memory and available for execution is referred to as the _________ .',
       choices: null,
@@ -440,9 +344,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_003',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: '__________ is a technique in which a process, executing an application, is divided into threads that can run concurrently.',
       choices: null,
@@ -450,9 +351,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_004',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'Two major problems with early serial processing systems were scheduling and __________ .',
       choices: null,
@@ -460,9 +358,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_005',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'The central idea behind the simple batch-processing scheme is the use of a piece of software known as the _________ .',
       choices: null,
@@ -470,9 +365,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_006',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'Any resource allocation and scheduling policy must consider three factors: Fairness, Differential responsiveness, and __________ .',
       choices: null,
@@ -480,9 +372,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_007',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'A __________ is set at the beginning of each job to prevent any single job from monopolizing the system.',
       choices: null,
@@ -490,9 +379,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_008',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'The OS has five principal storage management responsibilities: process isolation, automatic allocation and management, support of modular programming, protection and access control, and __________ .',
       choices: null,
@@ -500,9 +386,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_009',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'The earliest computers employed __________ processing, a name derived by the way the users have access to the systems.',
       choices: null,
@@ -510,9 +393,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_010',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: '__________ was designed to keep the processor and I/O devices, including storage devices, simultaneously busy to achieve maximum efficiency.',
       choices: null,
@@ -520,9 +400,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_011',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'In a time-sharing, multiprogramming system, multiple users simultaneously access the system through __________ .',
       choices: null,
@@ -530,9 +407,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_012',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'The principal objective of __________ is to maximize processor use.',
       choices: null,
@@ -540,9 +414,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_013',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'Three major lines of computer system development created problems in timing and synchronization that contributed to the development of the concept of the process: multiprogramming batch operation, time sharing, and __________ .',
       choices: null,
@@ -550,9 +421,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_014',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: '___________ is a facility that allows programs to address memory from a logical point of view, without regard to the amount of main memory physically available.',
       choices: null,
@@ -560,9 +428,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec02_fill_015',
-      chapter: 2,
-      source: 'testbank',
       type: 'fill',
       question: 'Security and protection as it relates to operating systems is grouped into four categories: Availability, Data integrity, Authenticity, and __________ .',
       choices: null,
@@ -571,5 +436,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
     },
   ];
 
-  window.ALL_QUESTIONS.push(...lec02);
+  const LECTURE = 2;
+  const SOURCE = 'testbank';
+  window.ALL_QUESTIONS.push(...lec02.map(q => ({ ...q, lecture: LECTURE, source: SOURCE })));
 })();

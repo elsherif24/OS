@@ -11,9 +11,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
   const lec03 = [
     // ==================== TRUE / FALSE ====================
     {
-      id: 'lec03_tf_001',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'A computer platform consists of a collection of hardware resources, such as the processor, main memory, I/O modules, timers, and disk drives.',
       choices: ['True', 'False'],
@@ -22,9 +19,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_002',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'For efficiency, applications should be written directly for a given hardware platform.',
       choices: ['True', 'False'],
@@ -33,9 +27,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_003',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'A design change in the structure or semantics of the process control block could affect a number of modules in the OS.',
       choices: ['True', 'False'],
@@ -44,9 +35,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_004',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'The process control block is the key tool that enables the OS to support multiple processes and to provide for multiprocessing.',
       choices: ['True', 'False'],
@@ -55,9 +43,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_005',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'It is not the responsibility of the operating system to control the execution of processes.',
       choices: ['True', 'False'],
@@ -66,9 +51,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_006',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'The first step in designing an OS to control processes is to describe the behavior that we would like the processes to exhibit.',
       choices: ['True', 'False'],
@@ -77,9 +59,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_007',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'The OS may create a process on behalf of an application.',
       choices: ['True', 'False'],
@@ -88,9 +67,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_008',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'Swapping is not an I/O operation so it will not enhance performance.',
       choices: ['True', 'False'],
@@ -99,9 +75,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_009',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'If a system does not employ virtual memory each process to be executed must be fully loaded into main memory.',
       choices: ['True', 'False'],
@@ -110,9 +83,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_010',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'A process that is not in main memory is immediately available for execution, regardless of whether or not it is awaiting an event.',
       choices: ['True', 'False'],
@@ -121,9 +91,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_011',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'The OS may suspend a process if it detects or suspects a problem.',
       choices: ['True', 'False'],
@@ -132,9 +99,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_012',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'All processor designs include a register or set of registers, often known as the program status word, which contains status information.',
       choices: ['True', 'False'],
@@ -143,9 +107,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_013',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'The process control block is the least important data structure in an OS.',
       choices: ['True', 'False'],
@@ -154,9 +115,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_014',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'A process switch may occur any time that the OS has gained control from the currently running process.',
       choices: ['True', 'False'],
@@ -165,9 +123,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_tf_015',
-      chapter: 3,
-      source: 'testbank',
       type: 'tf',
       question: 'The principal function of the OS is to create, manage, and terminate processes.',
       choices: ['True', 'False'],
@@ -178,9 +133,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== MULTIPLE CHOICE ====================
     {
-      id: 'lec03_mcq_001',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'The processor itself provides only limited support for multiprogramming, and __________ is needed to manage the sharing of the processor and other resources by multiple applications at the same time.',
       choices: [
@@ -194,9 +146,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_002',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: '"The process was placed in a suspended state by an agent; either itself, a parent process, or the OS for the purpose of preventing its execution," is a characteristic of a _________ process.',
       choices: [
@@ -210,9 +159,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_003',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'A __________ is a unit of activity characterized by the execution of a sequence of instructions, a current state, and an associated set of system resources.',
       choices: [
@@ -226,9 +172,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_004',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'We can characterize the behavior of an individual process by listing the sequence of instructions, referred to as a __________, that executes for that process.',
       choices: [
@@ -242,9 +185,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_005',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'It is the principal responsibility of the __________ to control the execution of processes.',
       choices: [
@@ -258,9 +198,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_006',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'When one process spawns another, the spawned process is referred to as the __________ .',
       choices: [
@@ -274,9 +211,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_007',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: '__________ involves moving part or all of a process from main memory to disk.',
       choices: [
@@ -290,9 +224,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_008',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'When a process is in the _________ state it is in secondary memory but is available for execution as soon as it is loaded into main memory.',
       choices: [
@@ -306,9 +237,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_009',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'A process is in the _________ state when it is in main memory and awaiting an event.',
       choices: [
@@ -322,9 +250,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_010',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'The OS must maintain __________ tables to manage processes.',
       choices: [
@@ -338,9 +263,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_011',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'The collection of program, data, stack, and attributes is referred to as the _________ .',
       choices: [
@@ -354,9 +276,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_012',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'The _________ is the less-privileged mode.',
       choices: [
@@ -370,9 +289,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_013',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'The __________ contains the basic elements of a user\'s program and can be generated directly from a compiled object file.',
       choices: [
@@ -386,9 +302,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_014',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'A total of _________ process states are recognized by the UNIX SVR4 operating system.',
       choices: [
@@ -402,9 +315,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_mcq_015',
-      chapter: 3,
-      source: 'testbank',
       type: 'mcq',
       question: 'The portion of the operating system that selects the next process to run is called the _________ .',
       choices: [
@@ -420,9 +330,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
 
     // ==================== FILL IN THE BLANK ====================
     {
-      id: 'lec03_fill_001',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'The __________ is a layer of software between the applications and the computer hardware that supports applications and utilities.',
       choices: null,
@@ -430,9 +337,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_002',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'A process is in the _________ state when it is in secondary memory and awaiting an event.',
       choices: null,
@@ -440,9 +344,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_003',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'Two essential elements of a process are __________ and a set of data associated with that code.',
       choices: null,
@@ -450,9 +351,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_004',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'The _________ tables provide information about the existence of files, their location on secondary memory, their current status, and other attributes.',
       choices: null,
@@ -460,9 +358,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_005',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'A significant point about the __________ is that it contains sufficient information so that it is possible to interrupt a running process and later resume execution as if the interruption had not occurred.',
       choices: null,
@@ -470,9 +365,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_006',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'General-purpose registers are _________ dependent.',
       choices: null,
@@ -480,9 +372,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_007',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'When the OS creates a process at the explicit request of another process, the action is referred to as __________ .',
       choices: null,
@@ -490,9 +379,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_008',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'The process is said to be operating in a _________ fashion if each process in the queue is given a certain amount of time, in turn, to execute and then returned to the queue, unless blocked.',
       choices: null,
@@ -500,9 +386,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_009',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'A process in the _________ state is in main memory and available for execution.',
       choices: null,
@@ -510,9 +393,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_010',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: '_________ tables are used to keep track of both main (real) and secondary (virtual) memory.',
       choices: null,
@@ -520,9 +400,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_011',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'The process control block information can be grouped into three general categories: process identification, __________ and process control information.',
       choices: null,
@@ -530,9 +407,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_012',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'A __________ is the maximum amount of time that a process can execute before being interrupted.',
       choices: null,
@@ -540,9 +414,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_013',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'When a process is not running, the processor status information is stored in the _________ context area.',
       choices: null,
@@ -550,9 +421,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_014',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'The principal function of the OS is to create, manage, and ________ processes.',
       choices: null,
@@ -560,9 +428,6 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
       figure: null,
     },
     {
-      id: 'lec03_fill_015',
-      chapter: 3,
-      source: 'testbank',
       type: 'fill',
       question: 'An IDS comprises three logical components: sensors, __________, and user interface.',
       choices: null,
@@ -571,5 +436,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
     },
   ];
 
-  window.ALL_QUESTIONS.push(...lec03);
+  const LECTURE = 3;
+  const SOURCE = 'testbank';
+  window.ALL_QUESTIONS.push(...lec03.map(q => ({ ...q, lecture: LECTURE, source: SOURCE })));
 })();

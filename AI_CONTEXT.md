@@ -5,7 +5,7 @@
 ## Project Overview
 
 - **Name:** OS Course Review
-- **Purpose:** A static quiz/revision website for an Operating Systems course. Students practice questions filtered by chapter, source, type, and solved status.
+- **Purpose:** A static quiz/revision website for an Operating Systems course. Students practice questions filtered by lecture, source, type, and solved status.
 - **Hosting:** GitHub Pages (no backend, no database, no build tools)
 - **Tech Stack:** Pure HTML + CSS + JavaScript (vanilla, no frameworks)
 - **User Data:** All user data stored in `localStorage` (solved question IDs, theme preference, filter preferences)
@@ -39,9 +39,9 @@ OS/
 
 ### Screens (all in `index.html`, toggled via `.active` class)
 
-1. **Home Screen (`#home-screen`)** — Preference selection: chapters, sources, types, filters (include solved, randomize). Shows matching question count. "Start" button.
+1. **Home Screen (`#home-screen`)** — Preference selection: lectures, sources, types, filters (include solved, randomize). Shows matching question count. "Start" button.
 2. **Quiz Screen (`#quiz-screen`)** — One question at a time. Top bar with back button, progress (e.g. "3 / 45"), progress bar. Question card with meta badges, question text, optional figure image, choices or reveal button. Prev/Next navigation. Keyboard nav (Arrow keys, A/D, Space/Enter).
-3. **Settings Modal (`#settings-modal`)** — Theme toggle (dark/light), export/import JSON, reset progress per chapter or all.
+3. **Settings Modal (`#settings-modal`)** — Theme toggle (dark/light), export/import JSON, reset progress per lecture or all.
 
 ### Question Data Model
 
@@ -49,8 +49,8 @@ Each question is a JS object pushed into `window.ALL_QUESTIONS`:
 
 ```js
 {
-  id: 'ch01_mcq_001',        // Unique ID: ch{NN}_{type}_{NNN}
-  chapter: 1,                 // Integer 1-10
+  id: 'ch01_mcq_001',        // Unique ID: lec_{NN}_{source}_{type}_{hash}
+  lecture: 1,                 // Integer 1-10
   source: 'testbank',         // 'testbank' | 'student'
   type: 'mcq',                // 'mcq' | 'tf' | 'list' | 'define' | 'fill'
   question: 'Question text',  // String
@@ -103,7 +103,7 @@ Each question is a JS object pushed into `window.ALL_QUESTIONS`:
 
 ### Key Modules
 
-- **`Storage` (storage.js):** IIFE module. Methods: `getSolved`, `markSolved`, `unmarkSolved`, `isSolved`, `resetChapterSolved`, `resetAllSolved`, `getSolvedCount`, `getSolvedCountForChapter`, `getWrong`, `markWrong`, `unmarkWrong`, `isWrong`, `resetChapterWrong`, `resetAllWrong`, `getWrongCount`, `getWrongCountForChapter`, `resetChapter` (both), `resetAll` (both), `getTheme`, `setTheme`, `toggleTheme`, `getPreferences`, `setPreferences`, `exportData`, `importData`. Marking solved auto-removes from wrong and vice versa.
+- **`Storage` (storage.js):** IIFE module. Methods: `getSolved`, `markSolved`, `unmarkSolved`, `isSolved`, `resetLectureSolved`, `resetAllSolved`, `getSolvedCount`, `getSolvedCountForLecture`, `getWrong`, `markWrong`, `unmarkWrong`, `isWrong`, `resetLectureWrong`, `resetAllWrong`, `getWrongCount`, `getWrongCountForLecture`, `resetLecture` (both), `resetAll` (both), `getTheme`, `setTheme`, `toggleTheme`, `getPreferences`, `setPreferences`, `exportData`, `importData`. Marking solved auto-removes from wrong and vice versa.
 - **`App` (app.js):** IIFE module. Handles DOM caching, event binding, screen switching, preference gathering/restoring, question filtering (including "Only Wrong" mode), quiz rendering, self-assessment flow for reveal-type questions, toast notifications. Entry point: `App.init()` on `DOMContentLoaded`.
 
 ### Theming
@@ -143,5 +143,5 @@ If more than 4 lectures are needed:
 - Testbank loaded before student per lecture in `index.html`
 - `_testbank` files are fixed; `_student` files grow over time
 - `TOTAL_CHAPTERS = 4` in `app.js`; UI says "Lecture" / badge says "Lec"
-- `chapter` field in question objects stays as integer (1–4)
+- `lecture` field in question objects stays as integer (1–4)
 - The solved state auto-saves on answer (MCQ/TF) or reveal (list/define/fill)

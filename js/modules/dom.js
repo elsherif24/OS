@@ -13,6 +13,7 @@ export function cacheDom() {
   DOM.countPreview = $('#question-count-preview');
   DOM.filterSolved = $('#filter-solved');
   DOM.filterWrong = $('#filter-wrong');
+  DOM.filterStarred = $('#filter-starred');
   DOM.filterRandom = $('#filter-random');
 
   // Quiz
@@ -25,6 +26,7 @@ export function cacheDom() {
   DOM.qSource = $('#q-source');
   DOM.qSolvedBadge = $('#q-solved-badge');
   DOM.qWrongBadge = $('#q-wrong-badge');
+  DOM.qStarredBadge = $('#q-starred-badge');
   DOM.qFigure = $('#q-figure');
   DOM.qFigureImg = $('#q-figure-img');
   DOM.qText = $('#q-text');

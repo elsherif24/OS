@@ -4,6 +4,7 @@ const STORAGE_KEYS = {
   WRONG: 'os_review_wrong',
   THEME: 'os_review_theme',
   PREFERENCES: 'os_review_preferences',
+  STARRED: 'os_review_starred',
 };
 
 // ===== STORAGE MODULE =====
@@ -136,6 +137,53 @@ export const Storage = (() => {
     resetAllWrong();
   }
 
+  // --- Starred Questions ---
+
+  function getStarred() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEYS.STARRED);
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      console.error('Failed to read starred data:', e);
+      return [];
+    }
+  }
+
+  function setStarred(starredArray) {
+    try {
+      localStorage.setItem(STORAGE_KEYS.STARRED, JSON.stringify(starredArray));
+    } catch (e) {
+      console.error('Failed to save starred data:', e);
+    }
+  }
+
+  function markStarred(questionId) {
+    const starred = getStarred();
+    if (!starred.includes(questionId)) {
+      starred.push(questionId);
+      setStarred(starred);
+    }
+  }
+
+  function unmarkStarred(questionId) {
+    const starred = getStarred().filter((id) => id !== questionId);
+    setStarred(starred);
+  }
+
+  function isStarred(questionId) {
+    return getStarred().includes(questionId);
+  }
+
+  function toggleStarred(questionId) {
+    if (isStarred(questionId)) {
+      unmarkStarred(questionId);
+      return false;
+    } else {
+      markStarred(questionId);
+      return true;
+    }
+  }
+
   // --- Theme ---
 
   function getTheme() {
@@ -179,6 +227,7 @@ export const Storage = (() => {
     const data = {
       solved: getSolved(),
       wrong: getWrong(),
+      starred: getStarred(),
       theme: getTheme(),
       preferences: getPreferences(),
       exportedAt: new Date().toISOString(),
@@ -195,6 +244,9 @@ export const Storage = (() => {
       }
       if (data.wrong && Array.isArray(data.wrong)) {
         setWrong(data.wrong);
+      }
+      if (data.starred && Array.isArray(data.starred)) {
+        setStarred(data.starred);
       }
       if (data.theme && (data.theme === 'dark' || data.theme === 'light')) {
         setTheme(data.theme);
@@ -232,6 +284,12 @@ export const Storage = (() => {
     getWrongCountForLecture,
     resetLecture,
     resetAll,
+    getStarred,
+    setStarred,
+    markStarred,
+    unmarkStarred,
+    isStarred,
+    toggleStarred,
     getTheme,
     setTheme,
     toggleTheme,

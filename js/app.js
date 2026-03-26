@@ -5,7 +5,7 @@ import { applyTheme, buildLectureCheckboxes, buildResetLectureSelect, showScreen
 import { enrichQuestions } from './modules/questions.js';
 import { restorePreferences } from './modules/preferences.js';
 import { getFilteredQuestions } from './modules/quizFilter.js';
-import { startQuiz, goNext, goPrev, filteredQuestions, currentIndex } from './modules/quiz.js';
+import { startQuiz, goNext, goPrev, toggleStar, filteredQuestions, currentIndex } from './modules/quiz.js';
 import { openSettings, closeSettings, exportData, importDataFromFile, resetLectureProgress, resetAllProgress } from './modules/settings.js';
 
 // ===== GLOBAL QUESTION BANK =====
@@ -57,7 +57,7 @@ function bindEvents() {
       DOM.filterSolved.checked = false;
     }
 
-    if (t.id === 'filter-solved' || t.id === 'filter-wrong' || t.id === 'filter-random') {
+    if (t.id === 'filter-solved' || t.id === 'filter-wrong' || t.id === 'filter-starred' || t.id === 'filter-random') {
       updateQuestionCount();
     }
   });
@@ -105,6 +105,8 @@ function bindEvents() {
       if (q.type !== 'mcq' && q.type !== 'tf' && DOM.revealBtn && !DOM.revealBtn.classList.contains('hidden')) {
         DOM.revealBtn.click();
       }
+    } else if (e.key.toLowerCase() === 's') {
+      toggleStar();
     } else if (/^[1-9]$/.test(e.key)) {
       const q = filteredQuestions[currentIndex];
       if (!q) return;

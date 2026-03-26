@@ -46,6 +46,7 @@ export function renderQuestion(updateQuestionCount) {
 
   DOM.qSolvedBadge.classList.toggle('hidden', !Storage.isSolved(q.id));
   DOM.qWrongBadge.classList.toggle('hidden', !Storage.isWrong(q.id));
+  DOM.qStarredBadge.classList.toggle('hidden', !Storage.isStarred(q.id));
 
   if (q.figure) {
     DOM.qFigure.classList.remove('hidden');
@@ -177,6 +178,17 @@ function handleChoiceAnswer(q, selectedIndex, updateQuestionCount) {
 function updateStatusBadges(questionId) {
   DOM.qSolvedBadge.classList.toggle('hidden', !Storage.isSolved(questionId));
   DOM.qWrongBadge.classList.toggle('hidden', !Storage.isWrong(questionId));
+  DOM.qStarredBadge.classList.toggle('hidden', !Storage.isStarred(questionId));
+}
+
+export function toggleStar() {
+  if (filteredQuestions.length === 0) return;
+  const q = filteredQuestions[currentIndex];
+  if (!q) return;
+
+  const isNowStarred = Storage.toggleStarred(q.id);
+  updateStatusBadges(q.id);
+  showToast(isNowStarred ? 'Question starred ⭐' : 'Star removed ❌', isNowStarred ? 'success' : 'default');
 }
 
 export function goNext(updateQuestionCount) {

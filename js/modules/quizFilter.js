@@ -6,6 +6,7 @@ export function getFilteredQuestions() {
   const prefs = gatherPreferences();
   const solvedSet = new Set(Storage.getSolved());
   const wrongSet = new Set(Storage.getWrong());
+  const starredSet = new Set(Storage.getStarred());
 
   let questions = window.ALL_QUESTIONS.filter((q) => {
     if (!prefs.lectures.includes(q.lecture)) return false;
@@ -17,6 +18,10 @@ export function getFilteredQuestions() {
       if (!prefs.types.includes(q.subtype)) return false;
     } else {
       if (!prefs.types.includes(qType)) return false;
+    }
+
+    if (prefs.onlyStarred) {
+      if (!starredSet.has(q.id)) return false;
     }
 
     if (prefs.onlyWrong) {

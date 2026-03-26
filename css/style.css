@@ -468,6 +468,12 @@ body {
   border-color: transparent;
 }
 
+.badge-starred {
+  background: var(--yellow-bg);
+  color: var(--yellow);
+  border-color: transparent;
+}
+
 .badge-wrong {
   background: var(--red-bg);
   color: var(--red);

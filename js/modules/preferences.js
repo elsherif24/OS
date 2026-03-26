@@ -14,9 +14,10 @@ export function gatherPreferences() {
 
   const includeSolved = DOM.filterSolved.checked;
   const onlyWrong = DOM.filterWrong.checked;
+  const onlyStarred = DOM.filterStarred.checked;
   const randomize = DOM.filterRandom.checked;
 
-  return { lectures, sources, types, includeSolved, onlyWrong, randomize };
+  return { lectures, sources, types, includeSolved, onlyWrong, onlyStarred, randomize };
 }
 
 export function restorePreferences() {
@@ -46,6 +47,9 @@ export function restorePreferences() {
   }
   if (typeof prefs.onlyWrong === 'boolean') {
     DOM.filterWrong.checked = prefs.onlyWrong;
+  }
+  if (typeof prefs.onlyStarred === 'boolean') {
+    DOM.filterStarred.checked = prefs.onlyStarred;
   }
   if (typeof prefs.randomize === 'boolean') {
     DOM.filterRandom.checked = prefs.randomize;

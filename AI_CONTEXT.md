@@ -46,6 +46,7 @@ OS/
    - `Space`/`Enter`: Reveal answer (list/define/fill, before reveal)
    - `1`: Reveal answer (list/define/fill, before reveal) OR "Got it Right" (after reveal)
    - `2`: "Got it Wrong" (list/define/fill, after reveal)
+   - `S`: Toggle Star (mark question as starred for later review)
 3. **Settings Modal (`#settings-modal`)** — Theme toggle (dark/light), export/import JSON, reset progress per lecture or all.
 
 ### Question Data Model
@@ -93,6 +94,7 @@ Each question is a JS object pushed into `window.ALL_QUESTIONS`:
 |------------------|--------------------------------------------------------------|
 | Include Solved   | Shows all questions including ones already marked solved     |
 | Only Wrong       | Shows only questions the user previously got wrong           |
+| Only Starred     | Shows only questions the user previously starred             |
 | Randomize Order  | Shuffles question order each session                         |
 
 - "Include Solved" and "Only Wrong" are mutually exclusive — checking one unchecks the other
@@ -103,13 +105,14 @@ Each question is a JS object pushed into `window.ALL_QUESTIONS`:
 |--------------------------|---------------------------------------------|
 | `os_review_solved`       | JSON array of solved question ID strings    |
 | `os_review_wrong`        | JSON array of wrong question ID strings     |
+| `os_review_starred`      | JSON array of starred question ID strings   |
 | `os_review_theme`        | `'dark'` or `'light'`                       |
 | `os_review_preferences`  | JSON object of last-used filter preferences |
 
 ### Key Modules
 
-- **`Storage` (storage.js):** IIFE module. Methods: `getSolved`, `markSolved`, `unmarkSolved`, `isSolved`, `resetLectureSolved`, `resetAllSolved`, `getSolvedCount`, `getSolvedCountForLecture`, `getWrong`, `markWrong`, `unmarkWrong`, `isWrong`, `resetLectureWrong`, `resetAllWrong`, `getWrongCount`, `getWrongCountForLecture`, `resetLecture` (both), `resetAll` (both), `getTheme`, `setTheme`, `toggleTheme`, `getPreferences`, `setPreferences`, `exportData`, `importData`. Marking solved auto-removes from wrong and vice versa.
-- **`App` (app.js):** IIFE module. Handles DOM caching, event binding, screen switching, preference gathering/restoring, question filtering (including "Only Wrong" mode), quiz rendering, self-assessment flow for reveal-type questions, toast notifications. Entry point: `App.init()` on `DOMContentLoaded`.
+- **`Storage` (storage.js):** IIFE module. Methods: `getSolved`, `markSolved`, `unmarkSolved`, `isSolved`, `resetLectureSolved`, `resetAllSolved`, `getSolvedCount`, `getSolvedCountForLecture`, `getWrong`, `markWrong`, `unmarkWrong`, `isWrong`, `resetLectureWrong`, `resetAllWrong`, `getWrongCount`, `getWrongCountForLecture`, `getStarred`, `markStarred`, `unmarkStarred`, `isStarred`, `toggleStarred`, `resetLecture` (both), `resetAll` (both), `getTheme`, `setTheme`, `toggleTheme`, `getPreferences`, `setPreferences`, `exportData`, `importData`. Marking solved auto-removes from wrong and vice versa. Starred state is independent.
+- **`App` (app.js):** IIFE module. Handles DOM caching, event binding, screen switching, preference gathering/restoring, question filtering (including "Only Wrong" and "Only Starred" modes), quiz rendering, self-assessment flow for reveal-type questions, toast notifications. Entry point: `App.init()` on `DOMContentLoaded`.
 
 ### Theming
 

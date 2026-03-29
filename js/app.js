@@ -13,7 +13,7 @@ if (typeof window.ALL_QUESTIONS === 'undefined') {
   window.ALL_QUESTIONS = [];
 }
 
-const TOTAL_LECTURES = 4;
+const TOTAL_LECTURES = 6;
 
 function updateQuestionCount() {
   const count = getFilteredQuestions().length;

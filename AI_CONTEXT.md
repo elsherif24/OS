@@ -20,18 +20,22 @@ OS/
 ├── css/
 │   └── style.css
 ├── js/
-│   ├── app.js              # Main app logic; TOTAL_CHAPTERS=4; labels say "Lecture"/"Lec"
+│   ├── app.js              # Main app logic; TOTAL_LECTURES=6; labels say "Lecture"/"Lec"
 │   ├── storage.js
 │   ├── testbank/
 │   │   ├── lec01.js        # Lec01 testbank (fixed: 15 TF + 15 MCQ + 15 Fill)
 │   │   ├── lec02.js
 │   │   ├── lec03.js
-│   │   └── lec04.js
+│   │   ├── lec04.js
+│   │   ├── lec05.js
+│   │   └── lec06.js
 │   └── student/
 │       ├── lec01.js        # Lec01 student questions (empty, grows over time)
 │       ├── lec02.js
 │       ├── lec03.js
-│       └── lec04.js
+│       ├── lec04.js
+│       ├── lec05.js
+│       └── lec06.js
 └── images/
 ```
 
@@ -150,6 +154,6 @@ If more than 4 lectures are needed:
 - No build step — serve files directly
 - Testbank loaded before student per lecture in `index.html`
 - `_testbank` files are fixed; `_student` files grow over time
-- `TOTAL_CHAPTERS = 4` in `app.js`; UI says "Lecture" / badge says "Lec"
-- `lecture` field in question objects stays as integer (1–4)
+- `TOTAL_LECTURES = 6` in `app.js`; UI says "Lecture" / badge says "Lec"
+- `lecture` field in question objects stays as integer (1–6)
 - The solved state auto-saves on answer (MCQ/TF) or reveal (list/define/fill)
